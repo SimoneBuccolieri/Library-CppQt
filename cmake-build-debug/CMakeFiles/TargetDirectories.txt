@@ -1,0 +1,9 @@
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/Biblioteca.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/list_install_components.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/install.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/install/local.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/install/strip.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/Biblioteca_autogen_timestamp_deps.dir
+/Users/simonebuccolieri/Qt/Biblioteca/cmake-build-debug/CMakeFiles/Biblioteca_autogen.dir

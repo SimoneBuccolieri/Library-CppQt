@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_Biblioteca_FILE /Users/simonebuccolieri/Qt/Biblioteca/build/Qt_6_8_2_for_macOS-Debug/Biblioteca.app/Contents/MacOS/Biblioteca)
+set(__QT_DEPLOY_TARGET_Biblioteca_TYPE EXECUTABLE)
