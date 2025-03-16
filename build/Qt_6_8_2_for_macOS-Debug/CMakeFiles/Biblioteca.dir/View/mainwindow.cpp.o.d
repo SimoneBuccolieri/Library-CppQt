@@ -1,6 +1,6 @@
 CMakeFiles/Biblioteca.dir/View/mainwindow.cpp.o: \
   /Users/simonebuccolieri/Qt/Biblioteca/View/mainwindow.cpp \
-  /Users/simonebuccolieri/Qt/Biblioteca/View/mainwindow.h \
+  /Users/simonebuccolieri/Qt/Biblioteca/View/MainWindow.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/QMainWindow \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
@@ -1126,8 +1126,58 @@ CMakeFiles/Biblioteca.dir/View/mainwindow.cpp.o: \
   /Users/simonebuccolieri/Qt/Biblioteca/View/../Controller/bibliotecacontroller.h \
   /Users/simonebuccolieri/Qt/Biblioteca/View/../Controller/../Model/bibliotecamodel.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/QList \
-  /Users/simonebuccolieri/Qt/Biblioteca/View/../Controller/../Model/libro.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/QString \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/QFile \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qfile.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qfiledevice.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qiodevice.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/filesystem \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/copy_options.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/directory_entry.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/file_status.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/file_type.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/perms.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/file_time_type.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/filesystem_error.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/path.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iomanip \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/istream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/ostream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/bitset \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/format \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/container_adaptor.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/range_default_formatter.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/range_formatter.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/format_context.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/format_arg_store.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/format_args.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__ranges/ref_view.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/queue \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/deque \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/stack \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/format_functions.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_char.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/write_escaped.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/escaped_output_table.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_floating_point.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__charconv/chars_format.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__charconv/to_chars_floating_point.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_integer.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_pointer.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_string.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/print \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/unistd.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/operations.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/perm_options.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/space_info.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/directory_iterator.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/directory_options.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/u8path.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/QTextStream \
+  /Users/simonebuccolieri/Qt/Biblioteca/View/../Controller/../Model/libro.h \
   /Users/simonebuccolieri/Qt/Biblioteca/build/Qt_6_8_2_for_macOS-Debug/Biblioteca_autogen/include/ui_MainWindow.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/QVariant \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/QApplication \
@@ -1180,4 +1230,13 @@ CMakeFiles/Biblioteca.dir/View/mainwindow.cpp.o: \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/qtableview.h \
   /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/QWidget
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qdir.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qdirlisting.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qcalendar.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qfileinfo.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtCore.framework/Headers/qtimezone.h \
+  /Users/simonebuccolieri/Qt/6.8.2/macos/lib/QtWidgets.framework/Headers/qdialog.h

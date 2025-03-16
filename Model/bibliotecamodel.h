@@ -6,6 +6,9 @@
 #define BIBLIOTECAMODEL_H
 
 #include <QList>
+#include <QString>
+#include <QFile>
+#include <QTextStream>
 #include "libro.h"
 
 class BibliotecaModel {
@@ -16,6 +19,9 @@ public:
     void aggiungiLibro(const Libro &libro);
     void rimuoviLibro(const QString &isbn);
     QList<Libro> getLibri() const;
+
+    void salvaSuFile(const QString &filename);
+    void caricaDaFile(const QString &filename);
 };
 
 #endif // BIBLIOTECAMODEL_H

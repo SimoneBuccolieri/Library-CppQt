@@ -65,6 +65,20 @@
       </item>
      </layout>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnSalva">
+      <property name="text">
+       <string>Salva</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnCarica">
+      <property name="text">
+       <string>Carica</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>

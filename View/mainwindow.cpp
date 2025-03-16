@@ -1,5 +1,6 @@
-#include "mainwindow.h"
+#include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QFileDialog>
 
 MainWindow::MainWindow(BibliotecaController *controller, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), controller(controller) {
@@ -7,6 +8,9 @@ MainWindow::MainWindow(BibliotecaController *controller, QWidget *parent)
 
     connect(ui->btnAggiungi, &QPushButton::clicked, this, &MainWindow::onAggiungiLibro);
     connect(ui->btnRimuovi, &QPushButton::clicked, this, &MainWindow::onRimuoviLibro);
+    connect(ui->btnSalva, &QPushButton::clicked, this, &MainWindow::onSalvaSuFile);
+    connect(ui->btnCarica, &QPushButton::clicked, this, &MainWindow::onCaricaDaFile);
+
     aggiornaTabella();
 }
 
@@ -40,5 +44,20 @@ void MainWindow::aggiornaTabella() {
         ui->tableLibri->setItem(i, 0, new QTableWidgetItem(libri[i].getTitolo()));
         ui->tableLibri->setItem(i, 1, new QTableWidgetItem(libri[i].getAutore()));
         ui->tableLibri->setItem(i, 2, new QTableWidgetItem(libri[i].getIsbn()));
+    }
+}
+
+void MainWindow::onSalvaSuFile() {
+    QString filename = QFileDialog::getSaveFileName(this, "Salva Libreria", "", "CSV Files (*.csv);;Text Files (*.txt)");
+    if (!filename.isEmpty()) {
+        controller->salvaSuFile(filename);
+    }
+}
+
+void MainWindow::onCaricaDaFile() {
+    QString filename = QFileDialog::getOpenFileName(this, "Carica Libreria", "", "CSV Files (*.csv);;Text Files (*.txt)");
+    if (!filename.isEmpty()) {
+        controller->caricaDaFile(filename);
+        aggiornaTabella();
     }
 }

@@ -35,6 +35,8 @@ public:
     QHBoxLayout *horizontalLayoutButtons;
     QPushButton *btnAggiungi;
     QPushButton *btnRimuovi;
+    QPushButton *btnSalva;
+    QPushButton *btnCarica;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -87,6 +89,16 @@ public:
 
         verticalLayout->addLayout(horizontalLayoutButtons);
 
+        btnSalva = new QPushButton(centralwidget);
+        btnSalva->setObjectName("btnSalva");
+
+        verticalLayout->addWidget(btnSalva);
+
+        btnCarica = new QPushButton(centralwidget);
+        btnCarica->setObjectName("btnCarica");
+
+        verticalLayout->addWidget(btnCarica);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -102,6 +114,8 @@ public:
         inputISBN->setPlaceholderText(QCoreApplication::translate("MainWindow", "Inserisci ISBN", nullptr));
         btnAggiungi->setText(QCoreApplication::translate("MainWindow", "Aggiungi Libro", nullptr));
         btnRimuovi->setText(QCoreApplication::translate("MainWindow", "Rimuovi Libro", nullptr));
+        btnSalva->setText(QCoreApplication::translate("MainWindow", "Salva", nullptr));
+        btnCarica->setText(QCoreApplication::translate("MainWindow", "Carica", nullptr));
     } // retranslateUi
 
 };

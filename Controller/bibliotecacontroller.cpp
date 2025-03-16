@@ -19,3 +19,10 @@ void BibliotecaController::rimuoviLibro(QString isbn) {
 QList<Libro> BibliotecaController::getLibri() const {
     return model->getLibri();
 }
+void BibliotecaController::salvaSuFile(const QString &filename) {
+    model->salvaSuFile(filename);
+}
+
+void BibliotecaController::caricaDaFile(const QString &filename) {
+    model->caricaDaFile(filename);
+}

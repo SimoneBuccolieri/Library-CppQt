@@ -19,10 +19,12 @@ public:
     explicit MainWindow(BibliotecaController *controller, QWidget *parent = nullptr);
     ~MainWindow();
 
-    private slots:
-        void onAggiungiLibro();
+private slots:
+    void onAggiungiLibro();
     void onRimuoviLibro();
     void aggiornaTabella();
+    void onSalvaSuFile();
+    void onCaricaDaFile();
 };
 
 #endif // MAINWINDOW_H

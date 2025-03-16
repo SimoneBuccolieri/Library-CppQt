@@ -16,6 +16,8 @@ public:
     void aggiungiLibro(QString titolo, QString autore, QString isbn);
     void rimuoviLibro(QString isbn);
     QList<Libro> getLibri() const;
+    void salvaSuFile(const QString &filename);
+    void caricaDaFile(const QString &filename);
 };
 
 #endif // BIBLIOTECACONTROLLER_H
