@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-ee13363d8063838c73096c459a28b12e Biblioteca_autogen/timestamp
-cf5f0d5854dd444c72e031d0b733246f CMakeFiles/Biblioteca_autogen

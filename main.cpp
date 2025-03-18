@@ -1,18 +1,11 @@
-#include "View/mainwindow.h"
-
 #include <QApplication>
-
-#include "Model/bibliotecamodel.h"
-#include "Controller/bibliotecacontroller.h"
-#include <QApplication>
+#include "mainwindow.h"
 
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
-    BibliotecaModel model;
-    BibliotecaController controller(&model);
-    MainWindow w(&controller);
+    MainWindow mainWindow;
+    mainWindow.show();
 
-    w.show();
-    return a.exec();
+    return app.exec();
 }
