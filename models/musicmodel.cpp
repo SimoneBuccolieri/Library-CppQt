@@ -5,5 +5,5 @@
 #include "musicmodel.h"
 MusicModel::MusicModel(const QJsonObject &json) {
     titolo = json["titolo"].toString();
-    artista = json["autore"].toString();
+    artista = json["artista"].toString();
 }

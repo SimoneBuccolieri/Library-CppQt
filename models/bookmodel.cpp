@@ -10,4 +10,5 @@
 BookModel::BookModel(const QJsonObject &json) {
     titolo = json["titolo"].toString();
     autore = json["autore"].toString();
+    quantity = json["quantity"].toInt();
 }

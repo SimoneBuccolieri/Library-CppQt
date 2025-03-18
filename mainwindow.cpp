@@ -30,12 +30,10 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) {
 }
 
 MainWindow::~MainWindow() {
-    delete stackedWidget;
-    delete loginView;
-    delete registerView;
-    delete mainView;
     delete userController;
     delete userModel;
+    delete bibliotecaController;
+    delete bibliotecaModel;
 }
 
 // Passa alla schermata di registrazione

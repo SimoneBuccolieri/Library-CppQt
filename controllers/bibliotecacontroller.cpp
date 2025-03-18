@@ -4,11 +4,13 @@
 
 #include "bibliotecacontroller.h"
 #include <QDebug>
+#include <QDir>
 
 BibliotecaController::BibliotecaController(BibliotecaModel &model)
     : bibliotecaModel(model) {}
 
 void BibliotecaController::loadLibrary(const QString &filePath) {
+    qDebug() << "📂 Directory di esecuzione:" << QDir::currentPath();
     bibliotecaModel.loadFromJson(filePath);
     qDebug() << "Dati caricati da:" << filePath;
 }
@@ -17,7 +19,7 @@ QVector<BookModel> BibliotecaController::getBooks() const {
     return bibliotecaModel.getBooks();
 }
 
-QVector<FilmModel> BibliotecaController::getFilms() const {
+QVector<VideoModel> BibliotecaController::getFilms() const {
     return bibliotecaModel.getFilms();
 }
 
@@ -38,8 +40,8 @@ QVector<BookModel> BibliotecaController::searchBooks(const QString &query) const
 }
 
 // 🔍 Cerca film per titolo o regista
-QVector<FilmModel> BibliotecaController::searchFilms(const QString &query) const {
-    QVector<FilmModel> results;
+QVector<VideoModel> BibliotecaController::searchFilms(const QString &query) const {
+    QVector<VideoModel> results;
     for (const auto &film : bibliotecaModel.getFilms()) {
         if (film.getTitolo().contains(query, Qt::CaseInsensitive) ||
             film.getRegista().contains(query, Qt::CaseInsensitive)) {

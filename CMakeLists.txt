@@ -21,8 +21,12 @@ add_executable(Biblioteca
 
         models/usermodel.cpp models/usermodel.h
         models/bibliotecamodel.cpp models/bibliotecamodel.h
+
         models/bookmodel.cpp models/bookmodel.h
+
+        models/videomodel.cpp models/videomodel.h
         models/filmmodel.cpp models/filmmodel.h
+
         models/musicmodel.cpp models/musicmodel.h
 
         views/auth/loginview.cpp views/auth/loginview.h

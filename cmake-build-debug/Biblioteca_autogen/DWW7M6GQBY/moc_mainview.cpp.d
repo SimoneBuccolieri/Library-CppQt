@@ -106,6 +106,7 @@
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/filmmodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/musicmodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/usermodel.h \
+  /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/videomodel.h \
   /opt/homebrew/Cellar/qt/6.8.2/lib/QtCore.framework/Versions/A/Headers/QDebug \
   /opt/homebrew/Cellar/qt/6.8.2/lib/QtCore.framework/Versions/A/Headers/QFile \
   /opt/homebrew/Cellar/qt/6.8.2/lib/QtCore.framework/Versions/A/Headers/QJsonDocument \

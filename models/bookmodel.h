@@ -13,7 +13,7 @@ class BookModel {
 private:
   QString titolo;
   QString autore;
-  //int quantity;
+  int quantity;
   //void loadFromJson(const QString &filePath);
 
 public:
@@ -22,7 +22,7 @@ public:
 
   QString getTitolo() const { return titolo; }
   QString getAutore() const { return autore; }
-  //int getQty();
+  int getQuantity() const { return quantity; }
 };
 
 

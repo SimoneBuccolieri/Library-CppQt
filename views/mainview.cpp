@@ -53,7 +53,7 @@ void MainView::showLibrary() {
     libraryList->clear();
 
     for (const auto &book : bibliotecaController->getBooks()) {
-        libraryList->addItem("📖 " + book.getTitolo() + " - " + book.getAutore());
+        libraryList->addItem("📖 " + book.getTitolo() + " - " + book.getAutore() + " - " + QString::number(book.getQuantity()));
     }
 
     for (const auto &film : bibliotecaController->getFilms()) {

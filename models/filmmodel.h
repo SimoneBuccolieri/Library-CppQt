@@ -8,19 +8,13 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
+#include <videomodel.h>
 
 
-
-class FilmModel {
-private:
-    QString titolo;
-    QString regista;
+class FilmModel : public VideoModel{
 public:
     FilmModel();
     FilmModel(const QJsonObject &json);
-
-    QString getTitolo() const { return titolo; }
-    QString getRegista() const { return regista; }
     //int getQty();
 };
 

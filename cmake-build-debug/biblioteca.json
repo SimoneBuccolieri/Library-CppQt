@@ -1,6 +1,6 @@
 [
-  { "tipologia": "book", "titolo": "Il Signore degli Anelli", "autore": "J.R.R. Tolkien" },
-  { "tipologia": "book", "titolo": "Harry Potter", "autore": "J.K. Rowling" },
+  { "tipologia": "book", "titolo": "Il Signore degli Anelli", "autore": "J.R.R. Tolkien", "quantity": 10 },
+  { "tipologia": "book", "titolo": "Harry Potter", "autore": "J.K. Rowling", "quantity": 427 },
   { "tipologia": "film", "titolo": "Inception", "regista": "Christopher Nolan" },
   { "tipologia": "film", "titolo": "Interstellar", "regista": "Christopher Nolan" },
   { "tipologia": "music", "titolo": "Bohemian Rhapsody", "artista": "Queen" },
