@@ -13,11 +13,11 @@ public:
 
     void loadLibrary(const QString &filePath);  // ✅ Carica i dati JSON
     QVector<BookModel> getBooks() const;  // ✅ Restituisce i libri
-    QVector<VideoModel> getFilms() const;  // ✅ Restituisce i film
+    QVector<FilmModel> getFilms() const;  // ✅ Restituisce i film
     QVector<MusicModel> getMusic() const;  // ✅ Restituisce la musica
 
     QVector<BookModel> searchBooks(const QString &query) const;  // 🔍 Cerca libri
-    QVector<VideoModel> searchFilms(const QString &query) const;
+    QVector<FilmModel> searchFilms(const QString &query) const;
     QVector<MusicModel> searchMusic(const QString &query) const;
 
 private:

@@ -57,10 +57,10 @@ void MainView::showLibrary() {
     }
 
     for (const auto &film : bibliotecaController->getFilms()) {
-        libraryList->addItem("🎬 " + film.getTitolo() + " - " + film.getRegista());
+        libraryList->addItem("🎬 " + film.getTitolo() + " - " + film.getAutore() + " - " + QString::number(film.getQuantity()));
     }
 
     for (const auto &music : bibliotecaController->getMusic()) {
-        libraryList->addItem("🎵 " + music.getTitolo() + " - " + music.getArtista());
+        libraryList->addItem("🎵 " + music.getTitolo() + " - " + music.getAutore() + " - " + QString::number(music.getQuantity()));
     }
 }

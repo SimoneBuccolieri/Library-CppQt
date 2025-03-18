@@ -5,5 +5,6 @@
 #include "filmmodel.h"
 FilmModel::FilmModel(const QJsonObject &json) {
     titolo = json["titolo"].toString();
-    regista = json["autore"].toString();
+    autore = json["autore"].toString();
+    quantity = json["quantity"].toInt();
 }

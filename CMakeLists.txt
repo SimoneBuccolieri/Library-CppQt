@@ -24,7 +24,6 @@ add_executable(Biblioteca
 
         models/bookmodel.cpp models/bookmodel.h
 
-        models/videomodel.cpp models/videomodel.h
         models/filmmodel.cpp models/filmmodel.h
 
         models/musicmodel.cpp models/musicmodel.h

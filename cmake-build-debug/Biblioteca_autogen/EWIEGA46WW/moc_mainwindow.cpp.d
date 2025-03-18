@@ -104,9 +104,9 @@
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/bibliotecamodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/bookmodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/filmmodel.h \
+  /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/itemmodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/musicmodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/usermodel.h \
-  /Users/simonebuccolieri/CLionProjects/Library-CppQt/models/videomodel.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/views/auth/loginview.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/views/auth/registerview.h \
   /Users/simonebuccolieri/CLionProjects/Library-CppQt/views/mainview.h \

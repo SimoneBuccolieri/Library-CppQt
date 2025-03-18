@@ -18,12 +18,12 @@ public:
     void loadFromJson(const QString &filePath);  // ✅ Carica tutti i dati
 
     QVector<BookModel> getBooks() const { return books; }
-    QVector<VideoModel> getFilms() const { return films; }
+    QVector<FilmModel> getFilms() const { return films; }
     QVector<MusicModel> getMusic() const { return music; }
 
 private:
     QVector<BookModel> books;
-    QVector<VideoModel> films;
+    QVector<FilmModel> films;
     QVector<MusicModel> music;
 };
 

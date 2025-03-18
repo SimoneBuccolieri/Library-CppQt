@@ -454,12 +454,6 @@
 			null
 		],
 		[
-			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/models/videomodel.h",
-			"MU",
-			"IVK4DJNV27/moc_videomodel.cpp",
-			null
-		],
-		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/auth/loginview.h",
 			"MU",
 			"TDZJ5KI4TX/moc_loginview.cpp",
@@ -580,11 +574,6 @@
 		],
 		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/models/usermodel.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/models/videomodel.cpp",
 			"MU",
 			null
 		],

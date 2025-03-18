@@ -4,24 +4,18 @@
 
 #ifndef MUSICMODEL_H
 #define MUSICMODEL_H
+
 #include <QString>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
 
+#include <itemmodel.h>
 
-
-class MusicModel {
-private:
-    QString titolo;
-    QString artista;
+class MusicModel : public ItemModel {
 public:
-    MusicModel();
     MusicModel(const QJsonObject &json);
 
-    QString getTitolo() const { return titolo; }
-    QString getArtista() const { return artista; }
-    //int getQty();
 };
 
 

@@ -34,7 +34,7 @@ void BibliotecaModel::loadFromJson(const QString &filePath) {
         if (tipo == "book") {
             books.append(BookModel(jsonObj));
         } else if (tipo == "film") {
-            films.append(VideoModel(jsonObj));
+            films.append(FilmModel(jsonObj));
         } else if (tipo == "music") {
             music.append(MusicModel(jsonObj));
         } else {

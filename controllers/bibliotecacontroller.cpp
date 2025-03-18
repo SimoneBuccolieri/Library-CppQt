@@ -19,7 +19,7 @@ QVector<BookModel> BibliotecaController::getBooks() const {
     return bibliotecaModel.getBooks();
 }
 
-QVector<VideoModel> BibliotecaController::getFilms() const {
+QVector<FilmModel> BibliotecaController::getFilms() const {
     return bibliotecaModel.getFilms();
 }
 
@@ -40,11 +40,11 @@ QVector<BookModel> BibliotecaController::searchBooks(const QString &query) const
 }
 
 // 🔍 Cerca film per titolo o regista
-QVector<VideoModel> BibliotecaController::searchFilms(const QString &query) const {
-    QVector<VideoModel> results;
+QVector<FilmModel> BibliotecaController::searchFilms(const QString &query) const {
+    QVector<FilmModel> results;
     for (const auto &film : bibliotecaModel.getFilms()) {
         if (film.getTitolo().contains(query, Qt::CaseInsensitive) ||
-            film.getRegista().contains(query, Qt::CaseInsensitive)) {
+            film.getAutore().contains(query, Qt::CaseInsensitive)) {
             results.append(film);
             }
     }
@@ -56,7 +56,7 @@ QVector<MusicModel> BibliotecaController::searchMusic(const QString &query) cons
     QVector<MusicModel> results;
     for (const auto &music : bibliotecaModel.getMusic()) {
         if (music.getTitolo().contains(query, Qt::CaseInsensitive) ||
-            music.getArtista().contains(query, Qt::CaseInsensitive)) {
+            music.getAutore().contains(query, Qt::CaseInsensitive)) {
             results.append(music);
             }
     }

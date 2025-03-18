@@ -8,14 +8,12 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
-#include <videomodel.h>
+#include <itemmodel.h>
 
 
-class FilmModel : public VideoModel{
+class FilmModel : public ItemModel{
 public:
-    FilmModel();
     FilmModel(const QJsonObject &json);
-    //int getQty();
 };
 
 
