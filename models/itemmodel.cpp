@@ -18,3 +18,7 @@ ItemModel::ItemModel(const QJsonObject &json) {
     }
 
 }
+
+void ItemModel::setQuantity(int qty) {
+    quantity = qty;
+}

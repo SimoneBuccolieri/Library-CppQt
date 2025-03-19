@@ -21,6 +21,11 @@ private:
 public:
     MusicModel(const QJsonObject &json);
 
+    QString getAlbum() const {return album;}
+    int getDuration() const { return duration;}
+    QString getRecordLabel() const { return recordLabel;}
+    QString getFormat() const { return format;}
+
 };
 
 

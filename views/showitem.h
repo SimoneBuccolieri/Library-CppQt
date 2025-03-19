@@ -20,9 +20,12 @@ public:
     explicit ShowItem(BibliotecaController *bibliotecaController, int id, QWidget *parent = nullptr);
 
     void ShowBook(BookModel* book);
-
+private slots:
+    void prenota();
+    void restituisci();
 private:
     BibliotecaController *bibliotecaController;
+    int currentItemId;
 
 };
 

@@ -53,20 +53,20 @@ void MainView::showLibrary() {
     libraryList->clear();
 
     for (const auto &book : bibliotecaController->getBooks()) {
-        QListWidgetItem *item = new QListWidgetItem("📖 " + book.getTitolo() + " - " + book.getAutore() + " - " + QString::number(book.getQuantity()));
-        item->setData(Qt::UserRole, book.getId());  // ✅ Salva l'ID
+        QListWidgetItem *item = new QListWidgetItem("📖 " + book->getTitolo() + " - " + book->getAutore() + " - " + QString::number(book->getQuantity()));
+        item->setData(Qt::UserRole, book->getId());  // ✅ Salva l'ID
         libraryList->addItem(item);
     }
 
     for (const auto &film : bibliotecaController->getFilms()) {
-        QListWidgetItem *item = new QListWidgetItem("🎬 " + film.getTitolo() + " - " + film.getAutore());
-        item->setData(Qt::UserRole, film.getId());  // ✅ Salva l'ID
+        QListWidgetItem *item = new QListWidgetItem("🎬 " + film->getTitolo() + " - " + film->getAutore());
+        item->setData(Qt::UserRole, film->getId());  // ✅ Salva l'ID
         libraryList->addItem(item);
     }
 
     for (const auto &music : bibliotecaController->getMusic()) {
-        QListWidgetItem *item = new QListWidgetItem("🎵 " + music.getTitolo() + " - " + music.getAutore());
-        item->setData(Qt::UserRole, music.getId());  // ✅ Salva l'ID
+        QListWidgetItem *item = new QListWidgetItem("🎵 " + music->getTitolo() + " - " + music->getAutore());
+        item->setData(Qt::UserRole, music->getId());  // ✅ Salva l'ID
         libraryList->addItem(item);
     }
 

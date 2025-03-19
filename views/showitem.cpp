@@ -4,9 +4,9 @@
 
 #include "showitem.h"
 ShowItem::ShowItem(BibliotecaController *bibliotecaController, int id, QWidget *parent)
-    : QWidget(parent), bibliotecaController(bibliotecaController) {
+    : QWidget(parent), bibliotecaController(bibliotecaController), currentItemId(id) {
 
-    ItemModel* item = bibliotecaController->getItemById(id);
+    ItemModel* item = bibliotecaController->getItemById(currentItemId);
 
 
 
@@ -30,6 +30,9 @@ void ShowItem::ShowBook(BookModel* book) {
     QLabel *pageCountLabel = new QLabel(QString::number(book->getPageCount()), this);
     QLabel *languageLabel = new QLabel(book->getLanguage(), this);
 
+    QPushButton *prenotaButton = new QPushButton("Prenota", this);
+    QPushButton *restituisciButton = new QPushButton("Restituisci", this);
+
     layout->addWidget(titleLabel, 0, Qt::AlignHCenter);
     layout->addWidget(authorLabel, 0, Qt::AlignHCenter);
     layout->addWidget(quantityLabel, 0, Qt::AlignHCenter);
@@ -38,4 +41,16 @@ void ShowItem::ShowBook(BookModel* book) {
     layout->addWidget(pageCountLabel, 0, Qt::AlignHCenter);
     layout->addWidget(languageLabel, 0, Qt::AlignHCenter);
 
+    layout->addWidget(prenotaButton,0,Qt::AlignHCenter);
+    layout->addWidget(restituisciButton,0,Qt::AlignHCenter);
+    connect(prenotaButton, &QPushButton::clicked, this, &ShowItem::prenota);
+    connect(restituisciButton, &QPushButton::clicked, this, &ShowItem::restituisci);
+}
+void ShowItem::prenota() {
+    bibliotecaController->prenota(currentItemId);  // ✅ Chiamata alla funzione di prenotazione
+    qDebug() << "✅ Prenotazione effettuata per ID: " << currentItemId;;
+}
+void ShowItem::restituisci() {
+    bibliotecaController->restituisci(currentItemId);  // ✅ Chiamata alla funzione di prenotazione
+    qDebug() << "✅ restituzione effettuata per ID: " << currentItemId;;
 }

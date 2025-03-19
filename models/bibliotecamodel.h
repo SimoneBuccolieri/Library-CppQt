@@ -15,16 +15,12 @@
 class BibliotecaModel {
 public:
     BibliotecaModel();
-    void loadFromJson(const QString &filePath);  // ✅ Carica tutti i dati
+    void loadFromJson();  // ✅ Carica tutti i dati
+    void saveToJson();
 
-    QVector<BookModel> getBooks() const { return books; }
-    QVector<FilmModel> getFilms() const { return films; }
-    QVector<MusicModel> getMusic() const { return music; }
     QVector<ItemModel*> getItemModel() const { return items; }
+
 private:
-    QVector<BookModel> books;
-    QVector<FilmModel> films;
-    QVector<MusicModel> music;
     QVector<ItemModel*> items;
 };
 

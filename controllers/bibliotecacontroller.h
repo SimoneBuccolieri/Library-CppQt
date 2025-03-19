@@ -4,25 +4,29 @@
 
 #ifndef BIBLIOTECACONTROLLER_H
 #define BIBLIOTECACONTROLLER_H
-#include "../models/bibliotecamodel.h"
-
+#include "bibliotecamodel.h"
+#include "usermodel.h"
+#include "usercontroller.h"
 
 class BibliotecaController {
 public:
-    explicit BibliotecaController(BibliotecaModel &model);  // ✅ Usa il modello esistente
+    explicit BibliotecaController(BibliotecaModel &model, UserController &userController);  // ✅ Usa il modello esistente
 
-    void loadLibrary(const QString &filePath);  // ✅ Carica i dati JSON
-    QVector<BookModel> getBooks() const;  // ✅ Restituisce i libri
-    QVector<FilmModel> getFilms() const;  // ✅ Restituisce i film
-    QVector<MusicModel> getMusic() const;  // ✅ Restituisce la musica
 
-    QVector<BookModel> searchBooks(const QString &query) const;  // 🔍 Cerca libri
-    QVector<FilmModel> searchFilms(const QString &query) const;
-    QVector<MusicModel> searchMusic(const QString &query) const;
+    QVector<BookModel *> getBooks() const;
+    QVector<FilmModel *> getFilms() const;
+    QVector<MusicModel *> getMusic() const;
 
     ItemModel* getItemById(int id);
+    void loadFromJson();  // ✅ Carica i dati JSON
+    void saveToJson();
+
+    void prenota(int id);
+    void restituisci(int id); //dafare
+
 private:
     BibliotecaModel &bibliotecaModel;
+    UserController &userController;
 };
 
 

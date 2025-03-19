@@ -6,62 +6,44 @@
 #include <QDebug>
 #include <QDir>
 
-BibliotecaController::BibliotecaController(BibliotecaModel &model)
-    : bibliotecaModel(model) {}
-
-void BibliotecaController::loadLibrary(const QString &filePath) {
-    qDebug() << "📂 Directory di esecuzione:" << QDir::currentPath();
-    bibliotecaModel.loadFromJson(filePath);
-    qDebug() << "Dati caricati da:" << filePath;
+BibliotecaController::BibliotecaController(BibliotecaModel &model, UserController &controller)
+    : bibliotecaModel(model), userController(controller) {
 }
 
-QVector<BookModel> BibliotecaController::getBooks() const {
-    return bibliotecaModel.getBooks();
+void BibliotecaController::loadFromJson() {
+    bibliotecaModel.loadFromJson();
 }
-
-QVector<FilmModel> BibliotecaController::getFilms() const {
-    return bibliotecaModel.getFilms();
+void BibliotecaController::saveToJson() {
+    bibliotecaModel.saveToJson();
 }
-
-QVector<MusicModel> BibliotecaController::getMusic() const {
-    return bibliotecaModel.getMusic();
-}
-
-// 🔍 Cerca libri per titolo o autore
-QVector<BookModel> BibliotecaController::searchBooks(const QString &query) const {
-    QVector<BookModel> results;
-    for (const auto &book : bibliotecaModel.getBooks()) {
-        if (book.getTitolo().contains(query, Qt::CaseInsensitive) ||
-            book.getAutore().contains(query, Qt::CaseInsensitive)) {
-            results.append(book);
-            }
+QVector<BookModel*> BibliotecaController::getBooks() const {
+    QVector<BookModel*> books;
+    for (ItemModel* item : bibliotecaModel.getItemModel()) {
+        if (BookModel* book = dynamic_cast<BookModel*>(item)) {
+            books.append(book);
+        }
     }
-    return results;
+    return books;
+}
+QVector<FilmModel*> BibliotecaController::getFilms() const {
+    QVector<FilmModel*> films;
+    for (ItemModel* item : bibliotecaModel.getItemModel()) {
+        if (FilmModel* film = dynamic_cast<FilmModel*>(item)) {
+            films.append(film);
+        }
+    }
+    return films;
+}
+QVector<MusicModel*> BibliotecaController::getMusic() const {
+    QVector<MusicModel*> music;
+    for (ItemModel* item : bibliotecaModel.getItemModel()) {
+        if (MusicModel* musicItem = dynamic_cast<MusicModel*>(item)) {
+            music.append(musicItem);
+        }
+    }
+    return music;
 }
 
-// 🔍 Cerca film per titolo o regista
-QVector<FilmModel> BibliotecaController::searchFilms(const QString &query) const {
-    QVector<FilmModel> results;
-    for (const auto &film : bibliotecaModel.getFilms()) {
-        if (film.getTitolo().contains(query, Qt::CaseInsensitive) ||
-            film.getAutore().contains(query, Qt::CaseInsensitive)) {
-            results.append(film);
-            }
-    }
-    return results;
-}
-
-// 🔍 Cerca musica per titolo o artista
-QVector<MusicModel> BibliotecaController::searchMusic(const QString &query) const {
-    QVector<MusicModel> results;
-    for (const auto &music : bibliotecaModel.getMusic()) {
-        if (music.getTitolo().contains(query, Qt::CaseInsensitive) ||
-            music.getAutore().contains(query, Qt::CaseInsensitive)) {
-            results.append(music);
-            }
-    }
-    return results;
-}
 
 ItemModel* BibliotecaController::getItemById(int id) {
     QVector<ItemModel*> items = bibliotecaModel.getItemModel();  // ✅ Ottiene tutti gli oggetti
@@ -74,3 +56,43 @@ ItemModel* BibliotecaController::getItemById(int id) {
 
     return nullptr;  // ❌ Se l'ID non esiste, restituisce `nullptr`
 }
+
+void BibliotecaController::prenota(int id) {
+    // ✅ 1. Ottenere l'utente loggato
+    User* user = userController.getLoggedUser();
+    if (!user) {
+        qDebug() << "❌ Nessun utente loggato!";
+        return;
+    }
+
+    // ✅ 2. Ottenere l'oggetto dalla biblioteca
+    ItemModel* item = getItemById(id);
+    if (!item) {
+        qDebug() << "❌ Nessun oggetto trovato con ID:" << id;
+        return;
+    }
+
+    // ✅ 3. Verificare se l'oggetto ha copie disponibili
+    if (item->getQuantity() <= 0) {
+        qDebug() << "❌ Nessuna copia disponibile per questo oggetto!";
+        return;
+    }
+
+    // ✅ 4. Ridurre la quantità disponibile dell'oggetto
+    item->setQuantity(item->getQuantity() - 1);
+
+    // ✅ 5. Aggiungere l'oggetto ai prestiti dell'utente
+    if (user->prestiti.contains(id)) {
+        user->prestiti[id]++;
+    } else {
+        user->prestiti[id] = 1;
+    }
+
+    qDebug() << "✅ Prenotato oggetto ID:" << id << "per l'utente:" << user->username;
+    qDebug() << "📉 Nuova quantità disponibile:" << item->getQuantity();
+
+    // ✅ 6. Salvare le modifiche nei file JSON
+    saveToJson();
+    userController.saveToJson();
+}
+void BibliotecaController::restituisci(int id) {}

@@ -18,8 +18,13 @@ public:
     int getQuantity() const { return quantity;}
     int getReleaseYear() const { return releaseYear;}
     QString getGenre() const { return genre; }
+
+    void setQuantity(int qty);
+
 protected:
     explicit ItemModel(const QJsonObject &json);
+
+
 
     int id;
     QString titolo;

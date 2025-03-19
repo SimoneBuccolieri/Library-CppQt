@@ -4,16 +4,20 @@
 
 #include "mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) {
     stackedWidget = new QStackedWidget(this);
     setCentralWidget(stackedWidget);
 
-    bibliotecaModel = new BibliotecaModel();
-    bibliotecaController = new BibliotecaController(*bibliotecaModel);
-    bibliotecaController->loadLibrary("biblioteca.json");
+
 
     userModel = new UserModel();
     userController = new UserController(*userModel);
+    userController->loadFromJson();
+
+    bibliotecaModel = new BibliotecaModel();
+    bibliotecaController = new BibliotecaController(*bibliotecaModel, *userController);
+    bibliotecaController->loadFromJson();
 
     loginView = new LoginView(userController);
     registerView = new RegisterView(userController);
