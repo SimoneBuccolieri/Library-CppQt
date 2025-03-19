@@ -53,14 +53,31 @@ void MainView::showLibrary() {
     libraryList->clear();
 
     for (const auto &book : bibliotecaController->getBooks()) {
-        libraryList->addItem("📖 " + book.getTitolo() + " - " + book.getAutore() + " - " + QString::number(book.getQuantity()));
+        QListWidgetItem *item = new QListWidgetItem("📖 " + book.getTitolo() + " - " + book.getAutore() + " - " + QString::number(book.getQuantity()));
+        item->setData(Qt::UserRole, book.getId());  // ✅ Salva l'ID
+        libraryList->addItem(item);
     }
 
     for (const auto &film : bibliotecaController->getFilms()) {
-        libraryList->addItem("🎬 " + film.getTitolo() + " - " + film.getAutore() + " - " + QString::number(film.getQuantity()));
+        QListWidgetItem *item = new QListWidgetItem("🎬 " + film.getTitolo() + " - " + film.getAutore());
+        item->setData(Qt::UserRole, film.getId());  // ✅ Salva l'ID
+        libraryList->addItem(item);
     }
 
     for (const auto &music : bibliotecaController->getMusic()) {
-        libraryList->addItem("🎵 " + music.getTitolo() + " - " + music.getAutore() + " - " + QString::number(music.getQuantity()));
+        QListWidgetItem *item = new QListWidgetItem("🎵 " + music.getTitolo() + " - " + music.getAutore());
+        item->setData(Qt::UserRole, music.getId());  // ✅ Salva l'ID
+        libraryList->addItem(item);
     }
+
+    connect(libraryList, &QListWidget::itemClicked, this, &MainView::onItemClicked);
+}
+
+void MainView::onItemClicked(QListWidgetItem *item) {
+    int id = item->data(Qt::UserRole).toInt();  // ✅ Ottiene l'ID dell'elemento cliccato
+    qDebug() << "📌 Elemento cliccato con ID:" << id;
+
+    // ✅ Crea e mostra la finestra ShowItem passando l'ID
+    ShowItem *itemView = new ShowItem(bibliotecaController, id);
+    itemView->show();
 }

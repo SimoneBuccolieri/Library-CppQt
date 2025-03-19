@@ -13,6 +13,11 @@
 #include <itemmodel.h>
 
 class MusicModel : public ItemModel {
+private:
+    QString album;
+    int duration;
+    QString recordLabel;
+    QString format;
 public:
     MusicModel(const QJsonObject &json);
 

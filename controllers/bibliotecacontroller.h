@@ -20,6 +20,7 @@ public:
     QVector<FilmModel> searchFilms(const QString &query) const;
     QVector<MusicModel> searchMusic(const QString &query) const;
 
+    ItemModel* getItemById(int id);
 private:
     BibliotecaModel &bibliotecaModel;
 };

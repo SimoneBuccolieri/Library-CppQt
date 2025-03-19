@@ -22,6 +22,7 @@ add_executable(Biblioteca
         models/usermodel.cpp models/usermodel.h
         models/bibliotecamodel.cpp models/bibliotecamodel.h
 
+        models/itemmodel.cpp models/itemmodel.h
         models/bookmodel.cpp models/bookmodel.h
 
         models/filmmodel.cpp models/filmmodel.h
@@ -31,5 +32,6 @@ add_executable(Biblioteca
         views/auth/loginview.cpp views/auth/loginview.h
         views/auth/registerview.cpp views/auth/registerview.h
         views/mainview.cpp views/mainview.h
+        views/showitem.cpp views/showitem.h
 )
 target_link_libraries(Biblioteca PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

@@ -5,7 +5,7 @@
 #include "usermodel.h"
 
 UserModel::UserModel() {
-    users.append(User{"a", "a"});// Utente di test
+    users.append(User{"", ""});// Utente di test
 }
 
 bool UserModel::registerUser(const QString &username, const QString &password) {

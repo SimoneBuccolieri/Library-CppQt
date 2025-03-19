@@ -7,8 +7,17 @@
 #include <QDebug>
 
 
-BookModel::BookModel(const QJsonObject &json) {
-    titolo = json["titolo"].toString();
-    autore = json["autore"].toString();
-    quantity = json["quantity"].toInt();
+BookModel::BookModel(const QJsonObject &json) : ItemModel(json) {
+    if (json.contains("publisher")) {
+        publisher = json["publisher"].toString();
+    }
+    if (json.contains("ISBN")) {
+        ISBN = json["ISBN"].toInt();
+    }
+    if (json.contains("pageCount")) {
+        pageCount = json["pageCount"].toInt();
+    }
+    if (json.contains("language")) {
+        language = json["language"].toString();
+    }
 }

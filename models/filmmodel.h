@@ -12,6 +12,11 @@
 
 
 class FilmModel : public ItemModel{
+private:
+    QString director;
+    int duration;
+    int rating;
+    QString language;
 public:
     FilmModel(const QJsonObject &json);
 };

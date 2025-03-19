@@ -20,11 +20,12 @@ public:
     QVector<BookModel> getBooks() const { return books; }
     QVector<FilmModel> getFilms() const { return films; }
     QVector<MusicModel> getMusic() const { return music; }
-
+    QVector<ItemModel*> getItemModel() const { return items; }
 private:
     QVector<BookModel> books;
     QVector<FilmModel> films;
     QVector<MusicModel> music;
+    QVector<ItemModel*> items;
 };
 
 

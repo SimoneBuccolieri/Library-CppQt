@@ -3,3 +3,4 @@
 #include "TDZJ5KI4TX/moc_loginview.cpp"
 #include "TDZJ5KI4TX/moc_registerview.cpp"
 #include "DWW7M6GQBY/moc_mainview.cpp"
+#include "DWW7M6GQBY/moc_showitem.cpp"

@@ -33,10 +33,13 @@ void BibliotecaModel::loadFromJson(const QString &filePath) {
 
         if (tipo == "book") {
             books.append(BookModel(jsonObj));
+            items.append(new BookModel(jsonObj));
         } else if (tipo == "film") {
             films.append(FilmModel(jsonObj));
+            items.append(new FilmModel(jsonObj));
         } else if (tipo == "music") {
             music.append(MusicModel(jsonObj));
+            items.append(new MusicModel(jsonObj));
         } else {
             qDebug() << "Tipologia sconosciuta:" << tipo;
         }

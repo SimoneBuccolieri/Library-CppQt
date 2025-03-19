@@ -11,9 +11,19 @@
 #include <itemmodel.h>
 
 class BookModel : public ItemModel {
+private:
+  QString publisher;
+  int ISBN;
+  int pageCount;
+  QString language;
 public:
   BookModel(const QJsonObject &json);
+  //BookModel(const QString &titolo, const QString &autore);
 
+  QString getPublisher() const { return publisher; }
+  int getISBN() const { return ISBN;}
+  int getPageCount() const { return pageCount;}
+  QString getLanguage() const { return language; }
 };
 
 

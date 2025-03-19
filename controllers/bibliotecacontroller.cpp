@@ -62,3 +62,15 @@ QVector<MusicModel> BibliotecaController::searchMusic(const QString &query) cons
     }
     return results;
 }
+
+ItemModel* BibliotecaController::getItemById(int id) {
+    QVector<ItemModel*> items = bibliotecaModel.getItemModel();  // ✅ Ottiene tutti gli oggetti
+
+    for (ItemModel* item : items) {
+        if (item->getId() == id) {  // ✅ Confronta l'ID con quello richiesto
+            return item;
+        }
+    }
+
+    return nullptr;  // ❌ Se l'ID non esiste, restituisce `nullptr`
+}
