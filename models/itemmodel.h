@@ -11,7 +11,6 @@
 class ItemModel {
 public:
     virtual ~ItemModel() {}  // ✅ Distruttore virtuale per il polimorfismo
-    //virtual void printInfo() const = 0;
     int getId() const {return id;}
     QString getTitolo() const { return titolo; }
     QString getAutore() const { return autore; }

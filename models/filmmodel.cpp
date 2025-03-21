@@ -11,7 +11,7 @@ FilmModel::FilmModel(const QJsonObject &json) : ItemModel(json) {
         duration = json["duration"].toInt();
     }
     if (json.contains("rating")) {
-        rating = json["rating"].toInt();
+        rating = static_cast<float>(json["rating"].toDouble());
     }
     if (json.contains("language")) {
         language = json["language"].toString();

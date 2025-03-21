@@ -16,32 +16,8 @@ void BibliotecaController::loadFromJson() {
 void BibliotecaController::saveToJson() {
     bibliotecaModel.saveToJson();
 }
-QVector<BookModel*> BibliotecaController::getBooks() const {
-    QVector<BookModel*> books;
-    for (ItemModel* item : bibliotecaModel.getItemModel()) {
-        if (BookModel* book = dynamic_cast<BookModel*>(item)) {
-            books.append(book);
-        }
-    }
-    return books;
-}
-QVector<FilmModel*> BibliotecaController::getFilms() const {
-    QVector<FilmModel*> films;
-    for (ItemModel* item : bibliotecaModel.getItemModel()) {
-        if (FilmModel* film = dynamic_cast<FilmModel*>(item)) {
-            films.append(film);
-        }
-    }
-    return films;
-}
-QVector<MusicModel*> BibliotecaController::getMusic() const {
-    QVector<MusicModel*> music;
-    for (ItemModel* item : bibliotecaModel.getItemModel()) {
-        if (MusicModel* musicItem = dynamic_cast<MusicModel*>(item)) {
-            music.append(musicItem);
-        }
-    }
-    return music;
+QVector<ItemModel*> BibliotecaController::getItems() const {
+    return bibliotecaModel.getItemModel();
 }
 
 
@@ -94,5 +70,34 @@ void BibliotecaController::prenota(int id) {
     // ✅ 6. Salvare le modifiche nei file JSON
     saveToJson();
     userController.saveToJson();
+    emit datiAggiornati();
 }
-void BibliotecaController::restituisci(int id) {}
+void BibliotecaController::restituisci(int id) {
+    // ✅ 1. Ottenere l'utente loggato
+    User* user = userController.getLoggedUser();
+    if (!user) {
+        qDebug() << "❌ Nessun utente loggato!";
+        return;
+    }
+
+    // ✅ 2. Ottenere l'oggetto dalla biblioteca
+    ItemModel* item = getItemById(id);
+    if (!item) {
+        qDebug() << "❌ Nessun oggetto trovato con ID:" << id;
+        return;
+    }
+
+    // ✅ 3. Verificare se l'oggetto ha copie disponibili
+    if (user->prestiti.contains(id) && user->prestiti[id] > 0) {
+        user->prestiti[id]--;
+        if (user->prestiti[id]==0) {
+            user->prestiti.remove(id);
+        }
+        item->setQuantity(item->getQuantity() + 1);
+    }else {
+        qDebug() << "L'utente non ha mai prenotato" << item->getTitolo();
+    }
+    saveToJson();
+    userController.saveToJson();
+    emit datiAggiornati();
+}

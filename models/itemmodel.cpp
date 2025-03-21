@@ -16,6 +16,12 @@ ItemModel::ItemModel(const QJsonObject &json) {
     if (json.contains("quantity")) {
         quantity = json["quantity"].toInt();
     }
+    if (json.contains("genre")) {
+        genre = json["genre"].toString();
+    }
+    if (json.contains("releaseYear")) {
+        releaseYear = json["releaseYear"].toInt();
+    }
 
 }
 

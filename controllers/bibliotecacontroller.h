@@ -7,15 +7,16 @@
 #include "bibliotecamodel.h"
 #include "usermodel.h"
 #include "usercontroller.h"
+#include <QObject>
 
-class BibliotecaController {
+class BibliotecaController : public QObject {
+    Q_OBJECT
 public:
     explicit BibliotecaController(BibliotecaModel &model, UserController &userController);  // ✅ Usa il modello esistente
 
 
-    QVector<BookModel *> getBooks() const;
-    QVector<FilmModel *> getFilms() const;
-    QVector<MusicModel *> getMusic() const;
+    QVector<ItemModel *> getItems() const;
+
 
     ItemModel* getItemById(int id);
     void loadFromJson();  // ✅ Carica i dati JSON
@@ -27,6 +28,8 @@ public:
 private:
     BibliotecaModel &bibliotecaModel;
     UserController &userController;
+signals:
+    void datiAggiornati();
 };
 
 

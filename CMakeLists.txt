@@ -33,5 +33,6 @@ add_executable(Biblioteca
         views/auth/registerview.cpp views/auth/registerview.h
         views/mainview.cpp views/mainview.h
         views/showitem.cpp views/showitem.h
+        views/accountview.cpp views/accountview.h
 )
 target_link_libraries(Biblioteca PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

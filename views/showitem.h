@@ -19,13 +19,38 @@ class ShowItem : public QWidget{
 public:
     explicit ShowItem(BibliotecaController *bibliotecaController, int id, QWidget *parent = nullptr);
 
-    void ShowBook(BookModel* book);
+
 private slots:
+    void aggiornaDati();
     void prenota();
     void restituisci();
 private:
     BibliotecaController *bibliotecaController;
     int currentItemId;
+    ItemModel *item;
+
+    QLabel *titleLabel;
+    QLabel *authorLabel;
+    QLabel *quantityLabel;
+    QLabel *releaseYearLabel;
+    QLabel *genreLabel;
+
+    QLabel *publisherLabel;
+    QLabel *ISBNLabel;
+    QLabel *pageCountLabel;
+    QLabel *languageLabelB;
+
+    QLabel *durationLabelF;
+    QLabel *directorLabel;
+    QLabel *ratingLabel;
+    QLabel *languageLabelF;
+
+    QLabel *albumLabel;
+    QLabel *durationLabelM;
+    QLabel *formatLabel;
+    QLabel *recordLabelLabel;
+
+    QVBoxLayout *layout;
 
 };
 

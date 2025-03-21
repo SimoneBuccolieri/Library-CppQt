@@ -13,7 +13,7 @@
 class BookModel : public ItemModel {
 private:
   QString publisher;
-  int ISBN;
+  QString ISBN;
   int pageCount;
   QString language;
 public:
@@ -21,7 +21,7 @@ public:
   //BookModel(const QString &titolo, const QString &autore);
 
   QString getPublisher() const { return publisher; }
-  int getISBN() const { return ISBN;}
+  QString getISBN() const { return ISBN;}
   int getPageCount() const { return pageCount;}
   QString getLanguage() const { return language; }
 };

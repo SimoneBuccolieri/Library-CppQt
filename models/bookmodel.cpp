@@ -12,7 +12,7 @@ BookModel::BookModel(const QJsonObject &json) : ItemModel(json) {
         publisher = json["publisher"].toString();
     }
     if (json.contains("ISBN")) {
-        ISBN = json["ISBN"].toInt();
+        ISBN = json["ISBN"].toString();
     }
     if (json.contains("pageCount")) {
         pageCount = json["pageCount"].toInt();

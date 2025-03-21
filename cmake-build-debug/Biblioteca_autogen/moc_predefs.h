@@ -20,7 +20,6 @@
 #define __ARM_ARCH_PROFILE 'A'
 #define __ARM_FEATURE_AES 1
 #define __ARM_FEATURE_ATOMICS 1
-#define __ARM_FEATURE_BTI 1
 #define __ARM_FEATURE_CLZ 1
 #define __ARM_FEATURE_COMPLEX 1
 #define __ARM_FEATURE_CRC32 1
@@ -37,12 +36,12 @@
 #define __ARM_FEATURE_JCVT 1
 #define __ARM_FEATURE_LDREX 0xF
 #define __ARM_FEATURE_NUMERIC_MAXMIN 1
-#define __ARM_FEATURE_PAUTH 1
 #define __ARM_FEATURE_QRDMX 1
-#define __ARM_FEATURE_RCPC 1
 #define __ARM_FEATURE_SHA2 1
 #define __ARM_FEATURE_SHA3 1
 #define __ARM_FEATURE_SHA512 1
+#define __ARM_FEATURE_SM3 1
+#define __ARM_FEATURE_SM4 1
 #define __ARM_FEATURE_UNALIGNED 1
 #define __ARM_FP 0xE
 #define __ARM_FP16_ARGS 1
@@ -128,19 +127,6 @@
 #define __FLT_MIN_EXP__ (-125)
 #define __FLT_MIN__ 1.17549435e-38F
 #define __FLT_RADIX__ 2
-#define __FPCLASS_NEGINF 0x0004
-#define __FPCLASS_NEGNORMAL 0x0008
-#define __FPCLASS_NEGSUBNORMAL 0x0010
-#define __FPCLASS_NEGZERO 0x0020
-#define __FPCLASS_POSINF 0x0200
-#define __FPCLASS_POSNORMAL 0x0100
-#define __FPCLASS_POSSUBNORMAL 0x0080
-#define __FPCLASS_POSZERO 0x0040
-#define __FPCLASS_QNAN 0x0002
-#define __FPCLASS_SNAN 0x0001
-#define __FP_FAST_FMA 1
-#define __FP_FAST_FMAF 1
-#define __GCC_ASM_FLAG_OUTPUTS__ 1
 #define __GCC_ATOMIC_BOOL_LOCK_FREE 2
 #define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
 #define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
@@ -168,7 +154,6 @@
 #define __GXX_EXPERIMENTAL_CXX0X__ 1
 #define __GXX_RTTI 1
 #define __GXX_WEAK__ 1
-#define __HAVE_FUNCTION_MULTI_VERSIONING 1
 #define __INT16_C_SUFFIX__ 
 #define __INT16_FMTd__ "hd"
 #define __INT16_FMTi__ "hi"
@@ -408,7 +393,7 @@
 #define __UINT_LEAST8_MAX__ 255
 #define __UINT_LEAST8_TYPE__ unsigned char
 #define __USER_LABEL_PREFIX__ _
-#define __VERSION__ "Apple LLVM 16.0.0 (clang-1600.0.26.6)"
+#define __VERSION__ "Apple LLVM 14.0.3 (clang-1403.0.22.14.1)"
 #define __WCHAR_MAX__ 2147483647
 #define __WCHAR_TYPE__ int
 #define __WCHAR_WIDTH__ 32
@@ -416,16 +401,16 @@
 #define __WINT_TYPE__ int
 #define __WINT_WIDTH__ 32
 #define __aarch64__ 1
-#define __apple_build_version__ 16000026
+#define __apple_build_version__ 14030022
 #define __arm64 1
 #define __arm64__ 1
 #define __block __attribute__((__blocks__(byref)))
 #define __clang__ 1
 #define __clang_literal_encoding__ "UTF-8"
-#define __clang_major__ 16
+#define __clang_major__ 14
 #define __clang_minor__ 0
-#define __clang_patchlevel__ 0
-#define __clang_version__ "16.0.0 (clang-1600.0.26.6)"
+#define __clang_patchlevel__ 3
+#define __clang_version__ "14.0.3 (clang-1403.0.22.14.1)"
 #define __clang_wide_literal_encoding__ "UTF-32"
 #define __cplusplus 201703L
 #define __cpp_aggregate_bases 201603L
@@ -455,7 +440,6 @@
 #define __cpp_initializer_lists 200806L
 #define __cpp_inline_variables 201606L
 #define __cpp_lambdas 200907L
-#define __cpp_named_character_escapes 202207L
 #define __cpp_namespace_attributes 201411L
 #define __cpp_nested_namespace_definitions 201411L
 #define __cpp_noexcept_function_type 201510L
@@ -469,7 +453,6 @@
 #define __cpp_rtti 199711L
 #define __cpp_rvalue_references 200610L
 #define __cpp_static_assert 201411L
-#define __cpp_static_call_operator 202207L
 #define __cpp_structured_bindings 201606L
 #define __cpp_template_auto 201606L
 #define __cpp_threadsafe_static_init 200806L

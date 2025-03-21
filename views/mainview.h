@@ -16,6 +16,7 @@
 #include "usercontroller.h"
 #include "bibliotecacontroller.h"
 #include "showitem.h"
+#include "accountview.h"
 class MainView : public QMainWindow {
     Q_OBJECT
 
@@ -27,18 +28,22 @@ signals:
 
 private slots:
     void onLogoutClicked();
+    void onAccountClicked();
     void onItemClicked(QListWidgetItem *item);
 
 
 private:
     QLabel *welcomeLabel;
     QPushButton *logoutButton;
+    QPushButton *accountButton;
     UserController *userController;
 
     BibliotecaController *bibliotecaController;
     QListWidget *libraryList;
 
-    void showLibrary();
+
+private slots:
+    void aggiornaDati();
 };
 
 
