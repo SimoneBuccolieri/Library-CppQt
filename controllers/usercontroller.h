@@ -21,6 +21,8 @@ public:
     void loadFromJson();
     void saveToJson();
 
+    void logout();
+
     void prenotaItem(ItemModel *item, User *user);
 
     void restituisciItem(ItemModel *item, User *user);

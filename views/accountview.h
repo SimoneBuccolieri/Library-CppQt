@@ -6,6 +6,7 @@
 #define ACCOUNTVIEW_H
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QFormLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QListWidget>
@@ -18,6 +19,10 @@ class AccountView : public QWidget {
 
 public:
     explicit AccountView(UserController *userController, BibliotecaController *bibliotecaController, QWidget *parent = nullptr);
+signals:
+    void backRequested();
+private slots:
+    void back();
 private:
     UserController *userController;
     BibliotecaController *bibliotecaController;

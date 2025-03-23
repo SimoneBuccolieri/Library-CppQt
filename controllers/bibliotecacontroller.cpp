@@ -68,9 +68,7 @@ void BibliotecaController::prenota(int id) {
     qDebug() << "📉 Nuova quantità disponibile:" << item->getQuantity();
 
     // ✅ 6. Salvare le modifiche nei file JSON
-    saveToJson();
-    userController.saveToJson();
-    emit datiAggiornati();
+    update();
 }
 void BibliotecaController::restituisci(int id) {
     // ✅ 1. Ottenere l'utente loggato
@@ -97,7 +95,20 @@ void BibliotecaController::restituisci(int id) {
     }else {
         qDebug() << "L'utente non ha mai prenotato" << item->getTitolo();
     }
+
+    update();
+}
+void BibliotecaController::update() {
     saveToJson();
     userController.saveToJson();
     emit datiAggiornati();
+}
+void BibliotecaController::deleteId(int id) {
+    bibliotecaModel.deleteId(id);
+}
+int BibliotecaController::getLastId() {
+    return bibliotecaModel.getLastId();
+}
+void BibliotecaController::createItem(QString tipo) {
+    bibliotecaModel.createItem(tipo);
 }

@@ -4,7 +4,6 @@
 
 #include "mainview.h"
 
-#include "../mainwindow.h"
 MainView::MainView(UserController *userController, BibliotecaController *bibliotecaController, QMainWindow *parent) : QMainWindow(parent), userController(userController), bibliotecaController(bibliotecaController) {
     setWindowTitle("Biblioteca");
     setFixedSize(800, 600);
@@ -18,6 +17,11 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
     toolBar->addWidget(logoutButton);
     accountButton = new QPushButton("Account");
     toolBar->addWidget(accountButton);
+    qDebug() << userController->getLoggedUser()->username;
+    if (userController->getLoggedUser()->username == "admin") {
+        addItemButton = new QPushButton("Aggiungi Elemento");
+        toolBar->addWidget(addItemButton);
+    }
 
     // ✅ Creazione del widget centrale
     QWidget *centralWidget = new QWidget(this);
@@ -44,6 +48,7 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
 
     connect(logoutButton, &QPushButton::clicked, this, &MainView::onLogoutClicked);
     connect(accountButton, &QPushButton::clicked, this, &MainView::onAccountClicked);
+    connect(addItemButton, &QPushButton::clicked, this, &MainView::onAddItemClicked);
     connect(bibliotecaController, &BibliotecaController::datiAggiornati, this, &MainView::aggiornaDati);
     connect(libraryList, &QListWidget::itemClicked, this, &MainView::onItemClicked);
     aggiornaDati();  // ✅ Chiama la funzione
@@ -57,15 +62,7 @@ void MainView::aggiornaDati() {
     libraryList->clear();
 
     for (const auto &item : bibliotecaController->getItems()) {
-        QString icon;
-        if (dynamic_cast<BookModel*>(item)) icon = "📖 ";
-        else if (dynamic_cast<FilmModel*>(item)) icon = "🎬 ";
-        else if (dynamic_cast<MusicModel*>(item)) icon = "🎵 ";
-
-        QListWidgetItem *listItem = new QListWidgetItem(
-            icon + item->getTitolo() + " - " + item->getAutore() + " (Disponibili: " + QString::number(item->getQuantity()) + ")"
-        );
-
+        QListWidgetItem *listItem = new QListWidgetItem(item->getIcon() + item->getTitolo() + " - " + item->getAutore() + " (Disponibili: " + QString::number(item->getQuantity()) + ")");
         listItem->setData(Qt::UserRole, item->getId());
         libraryList->addItem(listItem);
     }
@@ -73,14 +70,12 @@ void MainView::aggiornaDati() {
 }
 
 void MainView::onItemClicked(QListWidgetItem *item) {
-    int id = item->data(Qt::UserRole).toInt();  // ✅ Ottiene l'ID dell'elemento cliccato
-    qDebug() << "📌 Elemento cliccato con ID:" << id;
-
-    // ✅ Crea e mostra la finestra ShowItem passando l'ID
-    ShowItem *itemView = new ShowItem(bibliotecaController, id);
-    itemView->show();
+    int id = item->data(Qt::UserRole).toInt();
+    emit richiestaDettagliItem(id);
 }
 void MainView::onAccountClicked() {
-    AccountView *accountView = new AccountView(userController, bibliotecaController);
-    accountView->show();
+    emit richiestaAccount();
+}
+void MainView::onAddItemClicked() {
+    emit richiestaAddItem();
 }

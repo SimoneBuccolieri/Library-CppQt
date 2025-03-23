@@ -17,12 +17,18 @@ public:
     int getQuantity() const { return quantity;}
     int getReleaseYear() const { return releaseYear;}
     QString getGenre() const { return genre; }
+    QString getIcon() const { return icon; }
 
-    void setQuantity(int qty);
+    void setIcon(const QString& newIcon);
+    void setTitolo(const QString& newTitolo);
+    void setAutore(const QString& newAutore);
+    void setQuantity(int newQuantity);
+    void setReleaseYear(int newReleaseYear);
+    void setGenre(const QString& newGenre);
 
 protected:
     explicit ItemModel(const QJsonObject &json);
-
+    explicit ItemModel(int id);
 
 
     int id;
@@ -31,6 +37,7 @@ protected:
     int quantity;
     int releaseYear;
     QString genre;
+    QString icon;
 };
 
 

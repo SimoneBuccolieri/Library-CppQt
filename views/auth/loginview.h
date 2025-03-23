@@ -19,8 +19,8 @@ class LoginView : public QWidget {
 public:
     explicit LoginView(UserController *controller, QWidget *parent = nullptr);
 
-    signals:
-        void registerRequested();
+signals:
+    void registerRequested();
     void loginSuccess();
 
     private slots:

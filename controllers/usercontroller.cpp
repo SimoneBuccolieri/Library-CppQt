@@ -37,3 +37,6 @@ User* UserController::getLoggedUser() {
 void UserController::saveToJson() {
     userModel.saveToJson();
 }
+void UserController::logout() {
+    loggedUser=nullptr;
+}

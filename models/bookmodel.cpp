@@ -21,3 +21,20 @@ BookModel::BookModel(const QJsonObject &json) : ItemModel(json) {
         language = json["language"].toString();
     }
 }
+BookModel::BookModel(int id): ItemModel(id), publisher(""), ISBN(""), pageCount(0), language("") {
+}
+void BookModel::setPublisher(const QString& newPublisher) {
+    publisher = newPublisher;
+}
+
+void BookModel::setISBN(const QString& newISBN) {
+    ISBN = newISBN;
+}
+
+void BookModel::setPageCount(int newPageCount) {
+    pageCount = newPageCount;
+}
+
+void BookModel::setLanguage(const QString& newLanguage) {
+    language = newLanguage;
+}

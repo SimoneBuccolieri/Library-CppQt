@@ -1,12 +1,13 @@
 #include <QApplication>
-#include "mainwindow.h"
+#include "usercontroller.h"
+#include "bibliotecacontroller.h"
+#include "viewcontroller.h"
 
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+    QApplication a(argc, argv);
 
-    MainWindow mainWindow;
-    mainWindow.show();
+    ViewController viewController;
+    viewController.show();
 
-    return app.exec();
+    return a.exec();
 }
-

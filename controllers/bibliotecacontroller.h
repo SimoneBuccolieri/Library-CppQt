@@ -24,6 +24,13 @@ public:
 
     void prenota(int id);
     void restituisci(int id); //dafare
+    void update();
+
+    void deleteId(int id);
+
+    int getLastId();
+
+    void createItem(QString tipo);
 
 private:
     BibliotecaModel &bibliotecaModel;

@@ -17,3 +17,20 @@ MusicModel::MusicModel(const QJsonObject &json) : ItemModel(json) {
         format = json["format"].toString();
     }
 }
+MusicModel::MusicModel(int id): ItemModel(id), album(""), duration(0), recordLabel(""), format("") {
+}
+void MusicModel::setAlbum(const QString& newAlbum) {
+    album = newAlbum;
+}
+
+void MusicModel::setDuration(int newDuration) {
+    duration = newDuration;
+}
+
+void MusicModel::setRecordLabel(const QString& newRecordLabel) {
+    recordLabel = newRecordLabel;
+}
+
+void MusicModel::setFormat(const QString& newFormat) {
+    format = newFormat;
+}

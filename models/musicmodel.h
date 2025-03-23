@@ -20,11 +20,16 @@ private:
     QString format;
 public:
     MusicModel(const QJsonObject &json);
-
+    explicit MusicModel(int id);
     QString getAlbum() const {return album;}
     int getDuration() const { return duration;}
     QString getRecordLabel() const { return recordLabel;}
     QString getFormat() const { return format;}
+
+    void setAlbum(const QString& newAlbum);
+    void setDuration(int newDuration);
+    void setRecordLabel(const QString& newRecordLabel);
+    void setFormat(const QString& newFormat);
 
 };
 

@@ -18,12 +18,17 @@ private:
   QString language;
 public:
   BookModel(const QJsonObject &json);
-  //BookModel(const QString &titolo, const QString &autore);
+  explicit BookModel(int id);
 
   QString getPublisher() const { return publisher; }
   QString getISBN() const { return ISBN;}
   int getPageCount() const { return pageCount;}
   QString getLanguage() const { return language; }
+
+  void setPublisher(const QString& newSetPublisher);
+  void setISBN(const QString& newISBN);
+  void setPageCount(int newPageCount);
+  void setLanguage(const QString& newLanguage);
 };
 
 

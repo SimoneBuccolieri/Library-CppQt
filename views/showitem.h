@@ -6,6 +6,7 @@
 #define SHOWITEM_H
 
 #include <QWidget>
+#include <QFormLayout>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -19,8 +20,10 @@ class ShowItem : public QWidget{
 public:
     explicit ShowItem(BibliotecaController *bibliotecaController, int id, QWidget *parent = nullptr);
 
-
+signals:
+    void backRequested();
 private slots:
+    void back();
     void aggiornaDati();
     void prenota();
     void restituisci();
@@ -34,6 +37,7 @@ private:
     QLabel *quantityLabel;
     QLabel *releaseYearLabel;
     QLabel *genreLabel;
+    QLabel *iconLabel;
 
     QLabel *publisherLabel;
     QLabel *ISBNLabel;
@@ -49,6 +53,8 @@ private:
     QLabel *durationLabelM;
     QLabel *formatLabel;
     QLabel *recordLabelLabel;
+
+
 
     QVBoxLayout *layout;
 

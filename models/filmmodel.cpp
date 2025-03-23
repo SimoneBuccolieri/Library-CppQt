@@ -17,3 +17,20 @@ FilmModel::FilmModel(const QJsonObject &json) : ItemModel(json) {
         language = json["language"].toString();
     }
 }
+FilmModel::FilmModel(int id): ItemModel(id), director(""), duration(0), rating(0), language("") {
+}
+void FilmModel::setDirector(const QString& newDirector) {
+    director = newDirector;
+}
+
+void FilmModel::setDuration(int newDuration) {
+    duration = newDuration;
+}
+
+void FilmModel::setRating(float newRating) {
+    rating = newRating;
+}
+
+void FilmModel::setLanguage(const QString& newLanguage) {
+    language = newLanguage;
+}

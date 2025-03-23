@@ -6,32 +6,7 @@
 
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) {
-    stackedWidget = new QStackedWidget(this);
-    setCentralWidget(stackedWidget);
-
-
-
-    userModel = new UserModel();
-    userController = new UserController(*userModel);
-    userController->loadFromJson();
-
-    bibliotecaModel = new BibliotecaModel();
-    bibliotecaController = new BibliotecaController(*bibliotecaModel, *userController);
-    bibliotecaController->loadFromJson();
-
-    loginView = new LoginView(userController);
-    registerView = new RegisterView(userController);
-
-    stackedWidget->addWidget(loginView);
-    stackedWidget->addWidget(registerView);
-
-    connect(loginView, &LoginView::registerRequested, this, &MainWindow::showRegisterView);
-    connect(registerView, &RegisterView::loginRequested, this, &MainWindow::showLoginView);
-    connect(loginView, &LoginView::loginSuccess, this, &MainWindow::loginSuccessful);
-    connect(registerView, &RegisterView::registerSuccess, this, &MainWindow::loginSuccessful);
-
-    showLoginView();
-}
+   }
 
 MainWindow::~MainWindow() {
     delete userController;

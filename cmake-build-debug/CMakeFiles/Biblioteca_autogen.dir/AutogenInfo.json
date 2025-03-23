@@ -418,9 +418,9 @@
 			null
 		],
 		[
-			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/mainwindow.h",
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/controllers/viewcontroller.h",
 			"MU",
-			"EWIEGA46WW/moc_mainwindow.cpp",
+			"7CL2LH2DRO/moc_viewcontroller.cpp",
 			null
 		],
 		[
@@ -475,6 +475,18 @@
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/auth/registerview.h",
 			"MU",
 			"TDZJ5KI4TX/moc_registerview.cpp",
+			null
+		],
+		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/createitem.h",
+			"MU",
+			"DWW7M6GQBY/moc_createitem.cpp",
+			null
+		],
+		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/edititem.h",
+			"MU",
+			"DWW7M6GQBY/moc_edititem.cpp",
 			null
 		],
 		[
@@ -561,12 +573,12 @@
 			null
 		],
 		[
-			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/main.cpp",
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/controllers/viewcontroller.cpp",
 			"MU",
 			null
 		],
 		[
-			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/mainwindow.cpp",
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/main.cpp",
 			"MU",
 			null
 		],
@@ -612,6 +624,16 @@
 		],
 		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/auth/registerview.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/createitem.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/edititem.cpp",
 			"MU",
 			null
 		],

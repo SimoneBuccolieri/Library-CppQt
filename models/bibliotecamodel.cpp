@@ -5,6 +5,9 @@
 #include "bibliotecamodel.h"
 #include <QJsonArray>
 #include <QDebug>
+
+#include "bibliotecacontroller.h"
+
 BibliotecaModel::BibliotecaModel() {
     qDebug() << "BibliotecaModel inizializzato!";
 }
@@ -40,6 +43,7 @@ void BibliotecaModel::loadFromJson() {
         } else {
             qDebug() << "Tipologia sconosciuta:" << tipo;
         }
+        lastId = jsonObj["id"].toInt();
     }
 }
 void BibliotecaModel::saveToJson() {
@@ -53,6 +57,7 @@ void BibliotecaModel::saveToJson() {
         jsonObj["quantity"] = item->getQuantity();  // ✅ Salva la quantità aggiornata
         jsonObj["releaseYear"] = item->getReleaseYear();
         jsonObj["genre"] = item->getGenre();
+        jsonObj["icon"] = item->getIcon();
 
         if (const BookModel* book = dynamic_cast<const BookModel*>(item)) {
             jsonObj["tipologia"] = "book";
@@ -89,4 +94,34 @@ void BibliotecaModel::saveToJson() {
     file.close();
 
     qDebug() << "✅ Dati biblioteca salvati con successo!";
+}
+void BibliotecaModel::deleteId(int id) {
+    for (int i = 0; i < items.size(); ++i) {
+        if (items[i]->getId() == id) {
+            delete items[i];           // libera la memoria
+            items.removeAt(i);         // rimuove dall'elenco
+            return;                    // esce dopo averlo trovato
+        }
+    }
+}
+int BibliotecaModel::getLastId() {
+    return lastId;
+}
+
+void BibliotecaModel::createItem(QString tipo) {
+    lastId++;
+    if (tipo == "book") {
+        BookModel *book = new BookModel(lastId);
+        book->setIcon("📖");
+        items.append(book);
+    } else if (tipo == "film") {
+        FilmModel *film = new FilmModel(lastId);
+        film->setIcon("🎬");
+        items.append(film);
+    } else if (tipo == "music") {
+        MusicModel *music = new MusicModel(lastId);
+        music->setIcon("🎵");
+        items.append(music);
+    }
+
 }

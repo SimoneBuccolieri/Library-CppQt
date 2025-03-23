@@ -22,9 +22,28 @@ ItemModel::ItemModel(const QJsonObject &json) {
     if (json.contains("releaseYear")) {
         releaseYear = json["releaseYear"].toInt();
     }
+    if (json.contains("icon")) {
+        icon = json["icon"].toString();
+    }
 
 }
+ItemModel::ItemModel(int id):id(id), titolo(""), autore(""), quantity(0), releaseYear(0), genre(""), icon("") {}
 
-void ItemModel::setQuantity(int qty) {
-    quantity = qty;
+void ItemModel::setIcon(const QString& newIcon) {
+    icon = newIcon;
+}
+void ItemModel::setTitolo(const QString& newTitolo) {
+    titolo = newTitolo;
+}
+void ItemModel::setQuantity(int newQuantity) {
+    quantity = newQuantity;
+}
+void ItemModel::setAutore(const QString& newAutore) {
+    autore = newAutore;
+}
+void ItemModel::setReleaseYear(int newReleaseYear) {
+    releaseYear = newReleaseYear;
+}
+void ItemModel::setGenre(const QString& newGenre) {
+    genre = newGenre;
 }

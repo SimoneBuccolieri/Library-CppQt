@@ -19,10 +19,16 @@ private:
     QString language;
 public:
     FilmModel(const QJsonObject &json);
+    explicit FilmModel(int id);
     QString getDirector() const {return director;}
     int getDuration() const { return duration;}
     float getRating() const { return rating;}
     QString getLanguage() const { return language;}
+
+    void setDirector(const QString& newDirector);
+    void setDuration(int newDuration);
+    void setRating(float newRating);
+    void setLanguage(const QString& newLanguage);
 };
 
 

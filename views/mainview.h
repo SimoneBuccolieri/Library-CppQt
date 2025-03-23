@@ -25,10 +25,17 @@ public:
 
 signals:
     void logoutRequested();
+    void richiestaDettagliItem(int itemId);
+    void richiestaAccount();
+    void richiestaAddItem();
 
 private slots:
     void onLogoutClicked();
     void onAccountClicked();
+
+
+
+    void onAddItemClicked();
     void onItemClicked(QListWidgetItem *item);
 
 
@@ -36,6 +43,7 @@ private:
     QLabel *welcomeLabel;
     QPushButton *logoutButton;
     QPushButton *accountButton;
+    QPushButton *addItemButton;
     UserController *userController;
 
     BibliotecaController *bibliotecaController;

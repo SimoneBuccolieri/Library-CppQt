@@ -18,10 +18,17 @@ public:
     void loadFromJson();  // ✅ Carica tutti i dati
     void saveToJson();
 
+    void deleteId(int id);
+
+    int getLastId();
+
+    void createItem(QString tipo);
+
     QVector<ItemModel*> getItemModel() const { return items; }
 
 private:
     QVector<ItemModel*> items;
+    int lastId;
 };
 
 
