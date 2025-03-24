@@ -10,6 +10,8 @@
 
 class ItemModel {
 public:
+    virtual QMap<QString, QString> getDettagli() const = 0;
+    virtual void setDettagli(const QMap<QString, QString>& dati) = 0;
     virtual ~ItemModel() {}  // ✅ Distruttore virtuale per il polimorfismo
     int getId() const {return id;}
     QString getTitolo() const { return titolo; }

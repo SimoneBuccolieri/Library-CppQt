@@ -31,6 +31,9 @@ public:
     void setRecordLabel(const QString& newRecordLabel);
     void setFormat(const QString& newFormat);
 
+    QMap<QString, QString> getDettagli() const;
+
+    void setDettagli(const QMap<QString, QString> &dati);
 };
 
 

@@ -34,3 +34,28 @@ void FilmModel::setRating(float newRating) {
 void FilmModel::setLanguage(const QString& newLanguage) {
     language = newLanguage;
 }
+QMap<QString, QString> FilmModel::getDettagli() const {
+    QMap<QString, QString> dettagli;
+    dettagli["Tipo"] = "Film";
+    dettagli["Titolo"] = getTitolo();
+    dettagli["Autore"] = getAutore();
+    dettagli["Regista"] = director;
+    dettagli["Durata"] = QString::number(duration) + " minuti";
+    dettagli["Rating"] = QString::number(rating);
+    dettagli["Lingua"] = language;
+    dettagli["Quantità"] = QString::number(getQuantity());
+    dettagli["Anno di rilascio"] = QString::number(getReleaseYear());
+    dettagli["Genere"] = getGenre();
+    return dettagli;
+}
+void FilmModel::setDettagli(const QMap<QString, QString>& dati) {
+    if (dati.contains("Titolo")) setTitolo(dati["Titolo"]);
+    if (dati.contains("Autore")) setAutore(dati["Autore"]);
+    if (dati.contains("Regista")) director = dati["Regista"];
+    if (dati.contains("Durata")) duration = dati["Durata"].remove(" minuti").toInt();
+    if (dati.contains("Rating")) rating = dati["Rating"].toInt();
+    if (dati.contains("Lingua")) language = dati["Lingua"];
+    if (dati.contains("Quantità")) setQuantity(dati["Quantità"].toInt());
+    if (dati.contains("Anno di rilascio")) setReleaseYear(dati["Anno di rilascio"].toInt());
+    if (dati.contains("Genere")) setGenre(dati["Genere"]);
+}

@@ -29,6 +29,10 @@ public:
   void setISBN(const QString& newISBN);
   void setPageCount(int newPageCount);
   void setLanguage(const QString& newLanguage);
+
+  QMap<QString, QString> getDettagli() const;
+
+  void setDettagli(const QMap<QString, QString> &dati);
 };
 
 

@@ -34,3 +34,28 @@ void MusicModel::setRecordLabel(const QString& newRecordLabel) {
 void MusicModel::setFormat(const QString& newFormat) {
     format = newFormat;
 }
+QMap<QString, QString> MusicModel::getDettagli() const {
+    QMap<QString, QString> dettagli;
+    dettagli["Tipo"] = "Musica";
+    dettagli["Titolo"] = getTitolo();
+    dettagli["Autore"] = getAutore();
+    dettagli["Album"] = album;
+    dettagli["Durata"] = QString::number(duration) + " minuti";
+    dettagli["Formato"] = format;
+    dettagli["Etichetta discografica"] = recordLabel;
+    dettagli["Quantità"] = QString::number(getQuantity());
+    dettagli["Anno di rilascio"] = QString::number(getReleaseYear());
+    dettagli["Genere"] = getGenre();
+    return dettagli;
+}
+void MusicModel::setDettagli(const QMap<QString, QString>& dati) {
+    if (dati.contains("Titolo")) setTitolo(dati["Titolo"]);
+    if (dati.contains("Autore")) setAutore(dati["Autore"]);
+    if (dati.contains("Album")) album = dati["Album"];
+    if (dati.contains("Durata")) duration = dati["Durata"].remove(" minuti").toInt();
+    if (dati.contains("Formato")) format = dati["Formato"];
+    if (dati.contains("Etichetta discografica")) recordLabel = dati["Etichetta discografica"];
+    if (dati.contains("Quantità")) setQuantity(dati["Quantità"].toInt());
+    if (dati.contains("Anno di rilascio")) setReleaseYear(dati["Anno di rilascio"].toInt());
+    if (dati.contains("Genere")) setGenre(dati["Genere"]);
+}

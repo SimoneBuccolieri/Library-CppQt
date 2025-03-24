@@ -31,7 +31,7 @@ private:
     BibliotecaController *bibliotecaController;
     int currentItemId;
     ItemModel *item;
-
+    QFormLayout *formLayout;
     QLabel *titleLabel;
     QLabel *authorLabel;
     QLabel *quantityLabel;

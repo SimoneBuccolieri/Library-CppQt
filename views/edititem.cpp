@@ -9,56 +9,18 @@ EditItem::EditItem(BibliotecaController *bibliotecaController, int id, QWidget *
 
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    QFormLayout *formLayout = new QFormLayout();
+    formLayout = new QFormLayout();
 
     QPushButton *backButton = new QPushButton("Indietro");
     layout->addWidget(backButton, 0, Qt::AlignLeft);
     connect(backButton, &QPushButton::clicked, this, &EditItem::back);
     //Item
-    titleLabel = new QLineEdit(item->getTitolo(), this);
-    formLayout->addRow("Titolo:", titleLabel);
-    authorLabel = new QLineEdit(item->getAutore(), this);
-    formLayout->addRow("Autore:", authorLabel);
-    quantityLabel = new QLineEdit(QString::number(item->getQuantity()), this);
-    formLayout->addRow("Quantità:", quantityLabel);
-    releaseYearLabel = new QLineEdit(QString::number(item->getReleaseYear()), this);
-    formLayout->addRow("Anno di Rilascio:", releaseYearLabel);
-    genreLabel = new QLineEdit(item->getGenre(), this);
-    formLayout->addRow("Genere:", genreLabel);
-    iconLabel = new QLineEdit(item->getIcon(), this);
-    formLayout->addRow("Icona:", iconLabel);
-    //Book
-    if (auto *book = dynamic_cast<BookModel*>(item)) {
-        publisherLabel = new QLineEdit(book->getPublisher(), this);
-        formLayout->addRow("Editore:", publisherLabel);
-        ISBNLabel = new QLineEdit(book->getISBN(), this);
-        formLayout->addRow("ISBN:", ISBNLabel);
-        pageCountLabel = new QLineEdit(QString::number(book->getPageCount()), this);
-        formLayout->addRow("Pagine:", pageCountLabel);
-        languageLabelB = new QLineEdit(book->getLanguage(), this);
-        formLayout->addRow("Lingua:", languageLabelB);
-    }
-    //Film
-    if (auto *film = dynamic_cast<FilmModel*>(item)) {
-        directorLabel = new QLineEdit(film->getDirector(), this);
-        formLayout->addRow("Regista:", directorLabel);
-        durationLabelF = new QLineEdit(QString::number(film->getDuration()), this);
-        formLayout->addRow("Durata:", durationLabelF);
-        ratingLabel = new QLineEdit(QString::number(film->getRating()), this);
-        formLayout->addRow("Rating:", ratingLabel);
-        languageLabelF = new QLineEdit(film->getLanguage(), this);
-        formLayout->addRow("Lingua:", languageLabelF);
-    }
-    //Music
-    if (auto *music = dynamic_cast<MusicModel*>(item)) {
-        albumLabel = new QLineEdit(music->getAlbum(), this);
-        formLayout->addRow("Album:", albumLabel);
-        durationLabelM = new QLineEdit(QString::number(music->getDuration()), this);
-        formLayout->addRow("Durata:", durationLabelM);
-        formatLabel = new QLineEdit(music->getFormat(), this);
-        formLayout->addRow("Formato:", formatLabel);
-        recordLabelLabel = new QLineEdit(music->getRecordLabel(), this);
-        formLayout->addRow("Etichetta discografica:", recordLabelLabel);
+    QMap<QString, QString> dettagli = item->getDettagli();
+
+    for (auto it = dettagli.begin(); it != dettagli.end(); ++it) {
+        QLineEdit *edit = new QLineEdit(it.value(), this);
+        formLayout->addRow(it.key(), edit);
+        campi[it.key()] = edit;
     }
     layout->addLayout(formLayout);
     QPushButton *saveButton = new QPushButton("Salva", this);
@@ -75,12 +37,11 @@ void EditItem::back() {
     emit backRequested();  // emetti segnale verso il controller
 }
 void EditItem::saveClicked() {
-    item->setIcon(iconLabel->text());
-    item->setTitolo(titleLabel->text());
-    item->setAutore(authorLabel->text());
-    item->setQuantity(quantityLabel->text().toInt());
-    item->setReleaseYear(releaseYearLabel->text().toInt());
-    item->setGenre(genreLabel->text());
+    QMap<QString, QString> dati;
+    for (auto it = campi.begin(); it != campi.end(); ++it) {
+        dati[it.key()] = it.value()->text();
+    }
+    item->setDettagli(dati);
 
     bibliotecaController->update();
     back();

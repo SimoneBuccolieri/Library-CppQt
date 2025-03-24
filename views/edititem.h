@@ -35,29 +35,8 @@ private:
     BibliotecaController *bibliotecaController;
     int currentItemId;
     ItemModel *item;
-
-    QLineEdit *titleLabel;
-    QLineEdit *authorLabel;
-    QLineEdit *quantityLabel;
-    QLineEdit *releaseYearLabel;
-    QLineEdit *genreLabel;
-    QLineEdit *iconLabel;
-
-    QLineEdit *publisherLabel;
-    QLineEdit *ISBNLabel;
-    QLineEdit *pageCountLabel;
-    QLineEdit *languageLabelB;
-
-    QLineEdit *durationLabelF;
-    QLineEdit *directorLabel;
-    QLineEdit *ratingLabel;
-    QLineEdit *languageLabelF;
-
-    QLineEdit *albumLabel;
-    QLineEdit *durationLabelM;
-    QLineEdit *formatLabel;
-    QLineEdit *recordLabelLabel;
-
+    QFormLayout *formLayout;
+    QMap<QString, QLineEdit*> campi;
     QVBoxLayout *layout;
 
 };

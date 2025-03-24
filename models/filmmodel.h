@@ -29,6 +29,10 @@ public:
     void setDuration(int newDuration);
     void setRating(float newRating);
     void setLanguage(const QString& newLanguage);
+
+    QMap<QString, QString> getDettagli() const;
+
+    void setDettagli(const QMap<QString, QString> &dati);
 };
 
 
