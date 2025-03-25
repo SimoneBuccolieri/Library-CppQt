@@ -496,6 +496,12 @@
 			null
 		],
 		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/initialFileSelector.h",
+			"MU",
+			"DWW7M6GQBY/moc_initialFileSelector.cpp",
+			null
+		],
+		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/mainview.h",
 			"MU",
 			"DWW7M6GQBY/moc_mainview.cpp",
@@ -645,6 +651,11 @@
 		],
 		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/edititem.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/views/initialFileSelector.cpp",
 			"MU",
 			null
 		],

@@ -6,5 +6,6 @@
 #include "TDZJ5KI4TX/moc_registerview.cpp"
 #include "DWW7M6GQBY/moc_createitem.cpp"
 #include "DWW7M6GQBY/moc_edititem.cpp"
+#include "DWW7M6GQBY/moc_initialFileSelector.cpp"
 #include "DWW7M6GQBY/moc_mainview.cpp"
 #include "DWW7M6GQBY/moc_showitem.cpp"
