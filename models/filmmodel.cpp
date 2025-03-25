@@ -37,6 +37,7 @@ void FilmModel::setLanguage(const QString& newLanguage) {
 QMap<QString, QString> FilmModel::getDettagli() const {
     QMap<QString, QString> dettagli;
     dettagli["Tipo"] = "Film";
+    dettagli["Icona"] = getIcon();
     dettagli["Titolo"] = getTitolo();
     dettagli["Autore"] = getAutore();
     dettagli["Regista"] = director;
@@ -50,6 +51,7 @@ QMap<QString, QString> FilmModel::getDettagli() const {
 }
 void FilmModel::setDettagli(const QMap<QString, QString>& dati) {
     if (dati.contains("Titolo")) setTitolo(dati["Titolo"]);
+    if (dati.contains("Icona")) setIcon(dati["Icona"]);
     if (dati.contains("Autore")) setAutore(dati["Autore"]);
     if (dati.contains("Regista")) director = dati["Regista"];
     if (dati.contains("Durata")) duration = dati["Durata"].remove(" minuti").toInt();

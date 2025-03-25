@@ -42,6 +42,7 @@ void BookModel::setLanguage(const QString& newLanguage) {
 QMap<QString, QString> BookModel::getDettagli() const {
     QMap<QString, QString> dettagli;
     dettagli["Tipo"] = "Libro";
+    dettagli["Icona"] = getIcon();
     dettagli["Titolo"] = getTitolo();
     dettagli["Autore"] = getAutore();
     dettagli["Editore"] = publisher;
@@ -55,6 +56,7 @@ QMap<QString, QString> BookModel::getDettagli() const {
 }
 void BookModel::setDettagli(const QMap<QString, QString>& dati) {
     if (dati.contains("Titolo")) setTitolo(dati["Titolo"]);
+    if (dati.contains("Icona")) setIcon(dati["Icona"]);
     if (dati.contains("Autore")) setAutore(dati["Autore"]);
     if (dati.contains("Editore")) publisher = dati["Editore"];
     if (dati.contains("ISBN")) ISBN = dati["ISBN"];

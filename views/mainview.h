@@ -6,6 +6,7 @@
 #define MAINVIEW_H
 
 #include <QWidget>
+#include <QString>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QMainWindow>
@@ -34,7 +35,7 @@ private slots:
     void onAccountClicked();
 
 
-
+    void srtSearchUpdate(const QString &text);
     void onAddItemClicked();
     void onItemClicked(QListWidgetItem *item);
 
@@ -48,6 +49,7 @@ private:
 
     BibliotecaController *bibliotecaController;
     QListWidget *libraryList;
+    QLineEdit *searchBox;
 
 
 private slots:

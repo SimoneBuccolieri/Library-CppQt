@@ -4,6 +4,8 @@
 
 #include "mainview.h"
 
+#include <QLineEdit>
+
 MainView::MainView(UserController *userController, BibliotecaController *bibliotecaController, QMainWindow *parent) : QMainWindow(parent), userController(userController), bibliotecaController(bibliotecaController) {
     setWindowTitle("Biblioteca");
     setFixedSize(800, 600);
@@ -22,6 +24,8 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
         addItemButton = new QPushButton("Aggiungi Elemento");
         toolBar->addWidget(addItemButton);
     }
+    searchBox = new QLineEdit(this);
+    toolBar->addWidget(searchBox);
 
     // ✅ Creazione del widget centrale
     QWidget *centralWidget = new QWidget(this);
@@ -51,17 +55,34 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
     connect(addItemButton, &QPushButton::clicked, this, &MainView::onAddItemClicked);
     connect(bibliotecaController, &BibliotecaController::datiAggiornati, this, &MainView::aggiornaDati);
     connect(libraryList, &QListWidget::itemClicked, this, &MainView::onItemClicked);
+    connect(searchBox, &QLineEdit::textChanged, this, &MainView::srtSearchUpdate);
     aggiornaDati();  // ✅ Chiama la funzione
 }
 
 void MainView::onLogoutClicked() {
     emit logoutRequested();
 }
+void MainView::srtSearchUpdate(const QString &text) {
+    libraryList->clear();
+    if (text.isEmpty()) {
+        aggiornaDati();
+        return;
+    }
+    for (const auto &item : bibliotecaController->getItems()) {
+        if (item->getTitolo().contains(text, Qt::CaseInsensitive)) {
+            QListWidgetItem *listItem = new QListWidgetItem(item->getIcon() + item->getTitolo() + " - " + item->getAutore() + " (Disponibili: " + QString::number(item->getQuantity()) + ")");
+            listItem->setData(Qt::UserRole, item->getId());
+            libraryList->addItem(listItem);
+        }
+    }
+
+}
 void MainView::aggiornaDati() {
     if (!libraryList) return;
     libraryList->clear();
 
     for (const auto &item : bibliotecaController->getItems()) {
+
         QListWidgetItem *listItem = new QListWidgetItem(item->getIcon() + item->getTitolo() + " - " + item->getAutore() + " (Disponibili: " + QString::number(item->getQuantity()) + ")");
         listItem->setData(Qt::UserRole, item->getId());
         libraryList->addItem(listItem);

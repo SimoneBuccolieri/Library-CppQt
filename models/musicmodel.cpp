@@ -37,6 +37,7 @@ void MusicModel::setFormat(const QString& newFormat) {
 QMap<QString, QString> MusicModel::getDettagli() const {
     QMap<QString, QString> dettagli;
     dettagli["Tipo"] = "Musica";
+    dettagli["Icona"] = getIcon();
     dettagli["Titolo"] = getTitolo();
     dettagli["Autore"] = getAutore();
     dettagli["Album"] = album;
@@ -50,6 +51,7 @@ QMap<QString, QString> MusicModel::getDettagli() const {
 }
 void MusicModel::setDettagli(const QMap<QString, QString>& dati) {
     if (dati.contains("Titolo")) setTitolo(dati["Titolo"]);
+    if (dati.contains("Icona")) setIcon(dati["Icona"]);
     if (dati.contains("Autore")) setAutore(dati["Autore"]);
     if (dati.contains("Album")) album = dati["Album"];
     if (dati.contains("Durata")) duration = dati["Durata"].remove(" minuti").toInt();

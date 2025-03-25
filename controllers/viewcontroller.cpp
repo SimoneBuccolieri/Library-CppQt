@@ -50,6 +50,7 @@ void ViewController::showMain() {
     setFixedSize(800, 600);
     if (!mainView) {
         mainView = new MainView(userController, bibliotecaController);
+        bibliotecaController->update();
         connect(mainView, &MainView::richiestaDettagliItem, this, &ViewController::showItem);
         connect(mainView, &MainView::richiestaAccount, this, &ViewController::showAccount);
         connect(mainView, &MainView::richiestaAddItem, this, &ViewController::showAddItem);
