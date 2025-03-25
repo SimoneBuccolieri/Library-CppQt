@@ -166,5 +166,19 @@
         "releaseYear": 1973,
         "tipologia": "music",
         "title": "Time"
+    },
+    {
+        "ISBN": "",
+        "author": "",
+        "genre": "",
+        "icon": "📖",
+        "id": 305,
+        "language": "",
+        "pageCount": 0,
+        "publisher": "",
+        "quantity": 0,
+        "releaseYear": 0,
+        "tipologia": "book",
+        "title": "libro prova"
     }
 ]

@@ -424,6 +424,12 @@
 			null
 		],
 		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/globals.h",
+			"MU",
+			"EWIEGA46WW/moc_globals.cpp",
+			null
+		],
+		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/models/bibliotecamodel.h",
 			"MU",
 			"IVK4DJNV27/moc_bibliotecamodel.cpp",
@@ -574,6 +580,11 @@
 		],
 		[
 			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/controllers/viewcontroller.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/simonebuccolieri/CLionProjects/Library-CppQt/globals.cpp",
 			"MU",
 			null
 		],

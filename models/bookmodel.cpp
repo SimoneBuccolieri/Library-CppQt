@@ -66,3 +66,19 @@ void BookModel::setDettagli(const QMap<QString, QString>& dati) {
     if (dati.contains("Anno di rilascio")) setReleaseYear(dati["Anno di rilascio"].toInt());
     if (dati.contains("Genere")) setGenre(dati["Genere"]);
 }
+QJsonObject BookModel::toJson() const {
+    QJsonObject json;
+    json["tipologia"] = "book";
+    json["id"] = getId();
+    json["title"] = getTitolo();
+    json["author"] = getAutore();
+    json["quantity"] = getQuantity();
+    json["releaseYear"] = getReleaseYear();
+    json["genre"] = getGenre();
+    json["icon"] = getIcon();
+    json["publisher"] = publisher;
+    json["ISBN"] = ISBN;
+    json["pageCount"] = pageCount;
+    json["language"] = language;
+    return json;
+}

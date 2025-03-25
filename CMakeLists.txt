@@ -14,6 +14,7 @@ include_directories(${CMAKE_SOURCE_DIR}/models)
 include_directories(${CMAKE_SOURCE_DIR}/views)
 add_executable(Biblioteca
         main.cpp
+        globals.cpp globals.h
 
         controllers/viewcontroller.cpp controllers/viewcontroller.h
         controllers/usercontroller.cpp controllers/usercontroller.h

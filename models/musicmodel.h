@@ -34,6 +34,8 @@ public:
     QMap<QString, QString> getDettagli() const;
 
     void setDettagli(const QMap<QString, QString> &dati);
+
+    QJsonObject toJson() const;
 };
 
 

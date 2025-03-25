@@ -3,14 +3,14 @@
 //
 
 #include "usermodel.h"
-
+#include "../globals.h"
 
 
 UserModel::UserModel() {
 }
 
 void UserModel::loadFromJson() {
-    QFile file("users.json");
+    QFile file(usersPath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Errore apertura file JSON!";
         return;
@@ -86,7 +86,7 @@ void UserModel::saveToJson() {
     }
 
     QJsonDocument document(jsonArray);
-    QFile file("users.json");
+    QFile file(usersPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "❌ Errore salvataggio JSON utenti!";
         return;

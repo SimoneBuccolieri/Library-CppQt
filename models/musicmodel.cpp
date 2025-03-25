@@ -61,3 +61,19 @@ void MusicModel::setDettagli(const QMap<QString, QString>& dati) {
     if (dati.contains("Anno di rilascio")) setReleaseYear(dati["Anno di rilascio"].toInt());
     if (dati.contains("Genere")) setGenre(dati["Genere"]);
 }
+QJsonObject MusicModel::toJson() const {
+    QJsonObject json;
+    json["tipologia"] = "music";
+    json["id"] = getId();
+    json["title"] = getTitolo();
+    json["author"] = getAutore();
+    json["quantity"] = getQuantity();
+    json["releaseYear"] = getReleaseYear();
+    json["genre"] = getGenre();
+    json["icon"] = getIcon();
+    json["album"] = album;
+    json["duration"] = duration;
+    json["recordLabel"] = recordLabel;
+    json["format"] = format;
+    return json;
+}

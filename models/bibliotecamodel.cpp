@@ -3,6 +3,7 @@
 //
 
 #include "bibliotecamodel.h"
+#include "../globals.h"
 #include <QJsonArray>
 #include <QDebug>
 
@@ -12,9 +13,8 @@ BibliotecaModel::BibliotecaModel() {
     qDebug() << "BibliotecaModel inizializzato!";
 }
 void BibliotecaModel::loadFromJson() {
-    QFile file("biblioteca.json");
+    QFile file(bibliotecaPath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Errore apertura file JSON!";
         return;
     }
 
@@ -23,7 +23,6 @@ void BibliotecaModel::loadFromJson() {
 
     QJsonDocument document = QJsonDocument::fromJson(jsonData);
     if (!document.isArray()) {
-        qDebug() << "Formato JSON errato!";
         return;
     }
 
@@ -48,59 +47,24 @@ void BibliotecaModel::loadFromJson() {
 }
 void BibliotecaModel::saveToJson() {
     QJsonArray jsonArray;
-
     for (const ItemModel* item : items) {
-        QJsonObject jsonObj;
-        jsonObj["id"] = item->getId();
-        jsonObj["title"] = item->getTitolo();
-        jsonObj["author"] = item->getAutore();
-        jsonObj["quantity"] = item->getQuantity();  // ✅ Salva la quantità aggiornata
-        jsonObj["releaseYear"] = item->getReleaseYear();
-        jsonObj["genre"] = item->getGenre();
-        jsonObj["icon"] = item->getIcon();
-
-        if (const BookModel* book = dynamic_cast<const BookModel*>(item)) {
-            jsonObj["tipologia"] = "book";
-            jsonObj["publisher"] = book->getPublisher();
-            jsonObj["ISBN"] = book->getISBN();
-            jsonObj["pageCount"] = book->getPageCount();
-            jsonObj["language"] = book->getLanguage();
-        }
-        else if (const FilmModel* film = dynamic_cast<const FilmModel*>(item)) {
-            jsonObj["tipologia"] = "film";
-            jsonObj["director"] = film->getDirector();
-            jsonObj["duration"] = film->getDuration();
-            jsonObj["rating"] = film->getRating();
-            jsonObj["language"] = film->getLanguage();
-        }
-        else if (const MusicModel* music = dynamic_cast<const MusicModel*>(item)) {
-            jsonObj["tipologia"] = "music";
-            jsonObj["album"] = music->getAlbum();
-            jsonObj["duration"] = music->getDuration();
-            jsonObj["recordLabel"] = music->getRecordLabel();
-            jsonObj["format"] = music->getFormat();
-        }
-        jsonArray.append(jsonObj);
+        jsonArray.append(item->toJson());
     }
-
     QJsonDocument document(jsonArray);
-    QFile file("biblioteca.json");
+    QFile file(bibliotecaPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "❌ Errore salvataggio JSON biblioteca!";
         return;
     }
-
     file.write(document.toJson());
     file.close();
-
-    qDebug() << "✅ Dati biblioteca salvati con successo!";
 }
+
 void BibliotecaModel::deleteId(int id) {
     for (int i = 0; i < items.size(); ++i) {
         if (items[i]->getId() == id) {
-            delete items[i];           // libera la memoria
-            items.removeAt(i);         // rimuove dall'elenco
-            return;                    // esce dopo averlo trovato
+            delete items[i];
+            items.removeAt(i);
+            return;
         }
     }
 }

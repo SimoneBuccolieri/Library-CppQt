@@ -135,6 +135,8 @@ Biblioteca_autogen/timestamp: \
 	/Users/simonebuccolieri/CLionProjects/Library-CppQt/controllers/usercontroller.h \
 	/Users/simonebuccolieri/CLionProjects/Library-CppQt/controllers/viewcontroller.cpp \
 	/Users/simonebuccolieri/CLionProjects/Library-CppQt/controllers/viewcontroller.h \
+	/Users/simonebuccolieri/CLionProjects/Library-CppQt/globals.cpp \
+	/Users/simonebuccolieri/CLionProjects/Library-CppQt/globals.h \
 	/Users/simonebuccolieri/CLionProjects/Library-CppQt/main.cpp \
 	/Users/simonebuccolieri/CLionProjects/Library-CppQt/models/bibliotecamodel.cpp \
 	/Users/simonebuccolieri/CLionProjects/Library-CppQt/models/bibliotecamodel.h \

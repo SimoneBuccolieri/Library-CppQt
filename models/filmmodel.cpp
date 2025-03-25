@@ -61,3 +61,19 @@ void FilmModel::setDettagli(const QMap<QString, QString>& dati) {
     if (dati.contains("Anno di rilascio")) setReleaseYear(dati["Anno di rilascio"].toInt());
     if (dati.contains("Genere")) setGenre(dati["Genere"]);
 }
+QJsonObject FilmModel::toJson() const {
+    QJsonObject json;
+    json["tipologia"] = "film";
+    json["id"] = getId();
+    json["title"] = getTitolo();
+    json["author"] = getAutore();
+    json["quantity"] = getQuantity();
+    json["releaseYear"] = getReleaseYear();
+    json["genre"] = getGenre();
+    json["icon"] = getIcon();
+    json["director"] = director;
+    json["duration"] = duration;
+    json["rating"] = rating;
+    json["language"] = language;
+    return json;
+}
