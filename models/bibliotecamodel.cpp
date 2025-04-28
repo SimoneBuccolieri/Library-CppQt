@@ -31,7 +31,7 @@ void BibliotecaModel::loadFromJson() {
         if (!value.isObject()) continue;
 
         QJsonObject jsonObj = value.toObject();
-        QString tipo = jsonObj["tipologia"].toString();  // ✅ Controlla il tipo
+        QString tipo = jsonObj["tipologia"].toString();
 
         if (tipo == "book") {
             items.append(new BookModel(jsonObj));
@@ -39,8 +39,6 @@ void BibliotecaModel::loadFromJson() {
             items.append(new FilmModel(jsonObj));
         } else if (tipo == "music") {
             items.append(new MusicModel(jsonObj));
-        } else {
-            qDebug() << "Tipologia sconosciuta:" << tipo;
         }
         lastId = jsonObj["id"].toInt();
     }

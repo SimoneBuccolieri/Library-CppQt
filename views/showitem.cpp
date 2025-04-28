@@ -45,8 +45,8 @@ void ShowItem::aggiornaDati() {
     while (formLayout->count() > 0) {
     QLayoutItem *child = formLayout->takeAt(0);
     if (child) {
-        delete child->widget(); // Elimina il widget associato al layout item
-        delete child;           // Elimina il layout item stesso
+        delete child->widget();
+        delete child;
         }
     }
     QMap<QString, QString> dettagli = item->getDettagli();
@@ -60,12 +60,12 @@ void ShowItem::aggiornaDati() {
 
 
 void ShowItem::prenota() {
-    bibliotecaController->prenota(currentItemId);  // ✅ Chiamata alla funzione di prenotazione
-    qDebug() << "✅ Prenotazione effettuata per ID: " << currentItemId;;
+    bibliotecaController->prenota(currentItemId);
+    qDebug() << "Prenotazione effettuata per ID: " << currentItemId;;
 }
 void ShowItem::restituisci() {
-    bibliotecaController->restituisci(currentItemId);  // ✅ Chiamata alla funzione di prenotazione
-    qDebug() << "✅ restituzione effettuata per ID: " << currentItemId;;
+    bibliotecaController->restituisci(currentItemId);
+    qDebug() << "Restituzione effettuata per ID: " << currentItemId;;
 }
 void ShowItem::back() {
     bibliotecaController->update();

@@ -104,10 +104,10 @@ void ViewController::logout() {
         accountView = nullptr;
     }
 
-    // 2. Resetta lo stato dell'utente
-    userController->logout(); // (Assicurati che ci sia questo metodo nel controller)
+    userController->logout();
 
-    // 3. Torna alla schermata di login
+
+
     showLogin();
 
 }

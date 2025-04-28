@@ -14,7 +14,7 @@ public:
     virtual void setDettagli(const QMap<QString, QString>& dati) = 0;
     virtual QJsonObject toJson() const = 0;
 
-    virtual ~ItemModel() {}  // ✅ Distruttore virtuale per il polimorfismo
+    virtual ~ItemModel() {}
     int getId() const {return id;}
     QString getTitolo() const { return titolo; }
     QString getAutore() const { return autore; }
@@ -37,7 +37,7 @@ protected:
 
     int id;
     QString titolo;
-    QString autore;  // 📌 Può essere l'autore del libro o il regista del film
+    QString autore;
     int quantity;
     int releaseYear;
     QString genre;

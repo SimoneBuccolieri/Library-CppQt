@@ -14,7 +14,7 @@ void UserController::loadFromJson() {
 }
 bool UserController::login(const QString &username, const QString &password) {
     if (userModel.authenticateUser(username, password)) {
-        loggedUser = userModel.getUser(username);  // ✅ Memorizza l'utente loggato
+        loggedUser = userModel.getUser(username);
         return true;
     }
     return false;
@@ -22,7 +22,7 @@ bool UserController::login(const QString &username, const QString &password) {
 
 bool UserController::registerUser(const QString &username, const QString &password) {
     if (userModel.registerUser(username, password)) {
-        loggedUser = userModel.getUser(username);  // ✅ Memorizza il nuovo utente
+        loggedUser = userModel.getUser(username);
         saveToJson();
         return true;
 
@@ -31,7 +31,7 @@ bool UserController::registerUser(const QString &username, const QString &passwo
 }
 
 User* UserController::getLoggedUser() {
-    return loggedUser;  // ✅ Restituisce l'utente attualmente loggato
+    return loggedUser;
 }
 
 void UserController::saveToJson() {

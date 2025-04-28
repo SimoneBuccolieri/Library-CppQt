@@ -12,18 +12,18 @@
 class BibliotecaController : public QObject {
     Q_OBJECT
 public:
-    explicit BibliotecaController(BibliotecaModel &model, UserController &userController);  // ✅ Usa il modello esistente
+    explicit BibliotecaController(BibliotecaModel &model, UserController &userController);
 
 
     QVector<ItemModel *> getItems() const;
 
 
     ItemModel* getItemById(int id);
-    void loadFromJson();  // ✅ Carica i dati JSON
+    void loadFromJson();
     void saveToJson();
 
     void prenota(int id);
-    void restituisci(int id); //dafare
+    void restituisci(int id);
     void update();
 
     void deleteId(int id);

@@ -19,6 +19,11 @@ EditItem::EditItem(BibliotecaController *bibliotecaController, int id, QWidget *
 
     for (auto it = dettagli.begin(); it != dettagli.end(); ++it) {
         QLineEdit *edit = new QLineEdit(it.value(), this);
+
+        if (it.key() == "Icona") {
+            edit->setReadOnly(true);
+        }
+
         formLayout->addRow(it.key(), edit);
         campi[it.key()] = edit;
     }

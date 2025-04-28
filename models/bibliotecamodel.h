@@ -15,7 +15,7 @@
 class BibliotecaModel {
 public:
     BibliotecaModel();
-    void loadFromJson();  // ✅ Carica tutti i dati
+    void loadFromJson();
     void saveToJson();
 
     void deleteId(int id);

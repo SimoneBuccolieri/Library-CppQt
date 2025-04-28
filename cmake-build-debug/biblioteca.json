@@ -1,19 +1,5 @@
 [
     {
-        "ISBN": "9780544003415",
-        "author": "J.R.R. Tolkien",
-        "genre": "Fantasy",
-        "icon": "📖",
-        "id": 101,
-        "language": "Inglese",
-        "pageCount": 1178,
-        "publisher": "HarperCollins",
-        "quantity": 4,
-        "releaseYear": 1954,
-        "tipologia": "book",
-        "title": "Il Signore degli Anelli"
-    },
-    {
         "ISBN": "9780451524935",
         "author": "George Orwell",
         "genre": "Distopia",

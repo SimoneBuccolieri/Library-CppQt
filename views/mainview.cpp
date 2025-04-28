@@ -8,7 +8,6 @@
 
 MainView::MainView(UserController *userController, BibliotecaController *bibliotecaController, QMainWindow *parent) : QMainWindow(parent), userController(userController), bibliotecaController(bibliotecaController) {
     setWindowTitle("Biblioteca");
-    // Creazione della toolbar e pulsante logout
     QToolBar *toolBar = addToolBar("ToolBar");
     toolBar->setMovable(false);
     toolBar->setFixedHeight(40);
@@ -26,11 +25,9 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
     searchBox = new QLineEdit(this);
     toolBar->addWidget(searchBox);
 
-    // ✅ Creazione del widget centrale
     QWidget *centralWidget = new QWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(centralWidget);
 
-    // ✅ Creazione della label di benvenuto
     welcomeLabel = new QLabel(this);
     User *currentUser = userController->getLoggedUser();
 
@@ -41,20 +38,20 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
     }
 
     welcomeLabel->setAlignment(Qt::AlignCenter);
-    layout->addWidget(welcomeLabel);  // ✅ Ora è nel layout principale
+    layout->addWidget(welcomeLabel);
 
     libraryList = new QListWidget(this);
     layout->addWidget(libraryList);
 
     centralWidget->setLayout(layout);
-    setCentralWidget(centralWidget);  // ✅ Imposta il widget centrale
+    setCentralWidget(centralWidget);
 
     connect(logoutButton, &QPushButton::clicked, this, &MainView::onLogoutClicked);
     connect(accountButton, &QPushButton::clicked, this, &MainView::onAccountClicked);
     connect(bibliotecaController, &BibliotecaController::datiAggiornati, this, &MainView::aggiornaDati);
     connect(libraryList, &QListWidget::itemClicked, this, &MainView::onItemClicked);
     connect(searchBox, &QLineEdit::textChanged, this, &MainView::srtSearchUpdate);
-    aggiornaDati();  // ✅ Chiama la funzione
+    aggiornaDati();
 }
 
 void MainView::onLogoutClicked() {

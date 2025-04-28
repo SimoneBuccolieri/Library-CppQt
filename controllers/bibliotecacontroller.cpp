@@ -26,25 +26,21 @@ ItemModel* BibliotecaController::getItemById(int id) {
             return item;
         }
     }
-    return nullptr;  // ❌ Se l'ID non esiste, restituisce `nullptr`
+    return nullptr;  //Se l'ID non esiste
 }
 void BibliotecaController::prenota(int id) {
-    // ✅ 1. Ottenere l'utente loggato
     User* user = userController.getLoggedUser();
     if (!user) {
         return;
     }
-    // ✅ 2. Ottenere l'oggetto dalla biblioteca
     ItemModel* item = getItemById(id);
     if (!item) {
         return;
     }
-    // ✅ 3. Verificare se l'oggetto ha copie disponibili
     if (item->getQuantity() <= 0) {
         return;
     }
     item->setQuantity(item->getQuantity() - 1);
-    // ✅ 5. Aggiungere l'oggetto ai prestiti dell'utente
     if (user->prestiti.contains(id)) {
         user->prestiti[id]++;
     } else {
@@ -53,17 +49,14 @@ void BibliotecaController::prenota(int id) {
     update();
 }
 void BibliotecaController::restituisci(int id) {
-    // ✅ 1. Ottenere l'utente loggato
     User* user = userController.getLoggedUser();
     if (!user) {
         return;
     }
-    // ✅ 2. Ottenere l'oggetto dalla biblioteca
     ItemModel* item = getItemById(id);
     if (!item) {
         return;
     }
-    // ✅ 3. Verificare se l'oggetto ha copie disponibili
     if (user->prestiti.contains(id) && user->prestiti[id] > 0) {
         user->prestiti[id]--;
         if (user->prestiti[id]==0) {

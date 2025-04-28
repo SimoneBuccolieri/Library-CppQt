@@ -60,12 +60,12 @@ bool UserModel::authenticateUser(const QString &username, const QString &passwor
     return false;
 }
 User* UserModel::getUser(const QString &username) {
-    for (User &user : users) {  // Non uso `const` perché restituisco un puntatore
+    for (User &user : users) {
         if (user.username == username) {
-            return &user;  // ✅ Restituisce un puntatore all'utente trovato
+            return &user;
         }
     }
-    return nullptr;  // ❌ Utente non trovato
+    return nullptr;
 }
 void UserModel::saveToJson() {
     QJsonArray jsonArray;
@@ -75,7 +75,7 @@ void UserModel::saveToJson() {
         jsonObj["username"] = user.username;
         jsonObj["password"] = user.password;
 
-        // ✅ Converti la mappa prestiti in un oggetto JSON
+
         QJsonObject prestitiObj;
         for (auto it = user.prestiti.begin(); it != user.prestiti.end(); ++it) {
             prestitiObj[QString::number(it.key())] = it.value();
@@ -88,12 +88,10 @@ void UserModel::saveToJson() {
     QJsonDocument document(jsonArray);
     QFile file(usersPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "❌ Errore salvataggio JSON utenti!";
+        qDebug() << "Errore salvataggio JSON utenti!";
         return;
     }
 
     file.write(document.toJson());
     file.close();
-
-    qDebug() << "✅ Dati utenti salvati con successo!";
 }

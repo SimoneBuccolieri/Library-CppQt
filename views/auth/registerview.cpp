@@ -15,7 +15,7 @@ RegisterView::RegisterView(UserController *controller, QWidget *parent)
     usernameInput = new QLineEdit();
     passwordInput = new QLineEdit();
     loginButton = new QPushButton("Login");
-    registerButton = new QPushButton("Accedi");
+    registerButton = new QPushButton("Registrati");
 
     QLabel *titleLabel = new QLabel("Register Page", this);
     titleLabel->setAlignment(Qt::AlignCenter);
@@ -50,7 +50,7 @@ void RegisterView::onRegisterClicked() {
     if (userController->registerUser(usernameInput->text(), passwordInput->text())) {
         emit registerSuccess();
     } else {
-        QMessageBox::warning(this, "Errore", "");
+        QMessageBox::warning(this, "Errore", "Riempire username e password");
     }
 }
 
