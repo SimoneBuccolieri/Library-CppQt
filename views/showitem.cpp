@@ -42,12 +42,13 @@ ShowItem::ShowItem(BibliotecaController *bibliotecaController, int id, QWidget *
 void ShowItem::aggiornaDati() {
     if (!item) return;
 
-    QLayoutItem *child;
-    while ((child = formLayout->takeAt(0)) != nullptr) {
-        delete child->widget();
-        delete child;
+    while (formLayout->count() > 0) {
+    QLayoutItem *child = formLayout->takeAt(0);
+    if (child) {
+        delete child->widget(); // Elimina il widget associato al layout item
+        delete child;           // Elimina il layout item stesso
+        }
     }
-
     QMap<QString, QString> dettagli = item->getDettagli();
     for (auto it = dettagli.begin(); it != dettagli.end(); ++it) {
         QLabel *keyLabel = new QLabel(it.key());

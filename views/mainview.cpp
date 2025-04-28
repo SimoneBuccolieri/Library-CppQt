@@ -17,10 +17,11 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
     toolBar->addWidget(logoutButton);
     accountButton = new QPushButton("Account");
     toolBar->addWidget(accountButton);
-    qDebug() << userController->getLoggedUser()->username;
+
     if (userController->getLoggedUser()->username == "admin") {
         addItemButton = new QPushButton("Aggiungi Elemento");
         toolBar->addWidget(addItemButton);
+        connect(addItemButton, &QPushButton::clicked, this, &MainView::onAddItemClicked);
     }
     searchBox = new QLineEdit(this);
     toolBar->addWidget(searchBox);
@@ -50,7 +51,6 @@ MainView::MainView(UserController *userController, BibliotecaController *bibliot
 
     connect(logoutButton, &QPushButton::clicked, this, &MainView::onLogoutClicked);
     connect(accountButton, &QPushButton::clicked, this, &MainView::onAccountClicked);
-    connect(addItemButton, &QPushButton::clicked, this, &MainView::onAddItemClicked);
     connect(bibliotecaController, &BibliotecaController::datiAggiornati, this, &MainView::aggiornaDati);
     connect(libraryList, &QListWidget::itemClicked, this, &MainView::onItemClicked);
     connect(searchBox, &QLineEdit::textChanged, this, &MainView::srtSearchUpdate);
