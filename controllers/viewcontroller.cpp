@@ -38,16 +38,16 @@ ViewController::ViewController(QWidget *parent)
     showLogin();
 }
 void ViewController::showLogin() {
-    setFixedSize(300, 200);
+    setFixedSize(600, 1000);
     setCurrentWidget(loginView);
 }
 void ViewController::showRegister() {
-    setFixedSize(300, 200);
+    setFixedSize(600, 1000);
     setCurrentWidget(registerView);
 }
 void ViewController::showMain() {
 
-    setFixedSize(800, 600);
+    setFixedSize(600, 1000);
     if (!mainView) {
         mainView = new MainView(userController, bibliotecaController);
         bibliotecaController->update();

@@ -11,6 +11,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QFormLayout>
 #include "usercontroller.h"
 
 class LoginView : public QWidget {

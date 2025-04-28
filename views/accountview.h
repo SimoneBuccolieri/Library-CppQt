@@ -6,6 +6,7 @@
 #define ACCOUNTVIEW_H
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QScrollArea>
 #include <QFormLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -19,6 +20,9 @@ class AccountView : public QWidget {
 
 public:
     explicit AccountView(UserController *userController, BibliotecaController *bibliotecaController, QWidget *parent = nullptr);
+
+    void aggiornaDati();
+
 signals:
     void backRequested();
 private slots:
@@ -26,6 +30,7 @@ private slots:
 private:
     UserController *userController;
     BibliotecaController *bibliotecaController;
+    QListWidget *listWidget;
     QVBoxLayout *layout;
     QLabel *usernameLabel;
 };

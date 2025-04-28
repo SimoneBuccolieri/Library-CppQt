@@ -13,14 +13,23 @@ ShowItem::ShowItem(BibliotecaController *bibliotecaController, int id, QWidget *
     layout->addWidget(backButton, 0, Qt::AlignLeft);
     connect(backButton, &QPushButton::clicked, this, &ShowItem::back);
     formLayout = new QFormLayout();
+    formLayout->setLabelAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    layout->addStretch();
     //Item
     QMap<QString, QString> dettagli = item->getDettagli();
     for (auto it = dettagli.begin(); it != dettagli.end(); ++it) {
-        formLayout->addRow(new QLabel(it.key()), new QLabel(it.value()));
+        QLabel *keyLabel = new QLabel(it.key());
+        QLabel *valueLabel = new QLabel(it.value());
+
+        formLayout->addRow(keyLabel, valueLabel);
     }
+
     layout->addLayout(formLayout);
+    layout->addStretch();
     QPushButton *prenotaButton = new QPushButton("Prenota", this);
     QPushButton *restituisciButton = new QPushButton("Restituisci", this);
+
+
     layout->addWidget(prenotaButton,0,Qt::AlignHCenter);
     layout->addWidget(restituisciButton,0,Qt::AlignHCenter);
     connect(prenotaButton, &QPushButton::clicked, this, &ShowItem::prenota);
@@ -41,9 +50,13 @@ void ShowItem::aggiornaDati() {
 
     QMap<QString, QString> dettagli = item->getDettagli();
     for (auto it = dettagli.begin(); it != dettagli.end(); ++it) {
-        formLayout->addRow(new QLabel(it.key()), new QLabel(it.value()));
+        QLabel *keyLabel = new QLabel(it.key());
+        QLabel *valueLabel = new QLabel(it.value());
+
+        formLayout->addRow(keyLabel, valueLabel);
     }
 }
+
 
 void ShowItem::prenota() {
     bibliotecaController->prenota(currentItemId);  // ✅ Chiamata alla funzione di prenotazione

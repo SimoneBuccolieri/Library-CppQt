@@ -8,42 +8,50 @@
 
 InitialFileSelector::InitialFileSelector(QWidget *parent)
     : QDialog(parent) {
+
     setWindowTitle("Seleziona i file iniziali");
+    setMinimumSize(500, 700);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-
+    layout->addStretch();
+    QFormLayout *form = new QFormLayout();
     // Etichetta file biblioteca
     QLabel *libLabel = new QLabel("📚 Seleziona file biblioteca (.json):", this);
-    layout->addWidget(libLabel);
+    libLabel->setAlignment(Qt::AlignCenter);
+    form->addRow(libLabel);
 
     QPushButton *libButton = new QPushButton("Scegli file biblioteca", this);
-    layout->addWidget(libButton);
+    form->addRow(libButton);
 
     // Etichetta file utenti
     QLabel *userLabel = new QLabel("👤 Seleziona file utenti (.json):", this);
-    layout->addWidget(userLabel);
+    userLabel->setAlignment(Qt::AlignCenter);
+    form->addRow(userLabel);
 
     QPushButton *userButton = new QPushButton("Scegli file utenti", this);
-    layout->addWidget(userButton);
+    form->addRow(userButton);
 
     // Pulsante conferma
     QPushButton *okButton = new QPushButton("Conferma e continua", this);
-    layout->addWidget(okButton);
+    form->addItem(new QSpacerItem(0, 40, QSizePolicy::Minimum, QSizePolicy::Fixed));
+    form->addRow(okButton);
 
-    // Connessioni
-    connect(libButton, &QPushButton::clicked, this, [libLabel]() {
-        QString path = QFileDialog::getOpenFileName(nullptr, "File biblioteca", "", "JSON (*.json)");
+    layout->addLayout(form);
+    layout->addStretch();
+    // Connessioni corrette
+    connect(libButton, &QPushButton::clicked, this, [=]() {
+        QString path = QFileDialog::getOpenFileName(this, "File biblioteca", "", "JSON (*.json)");
         if (!path.isEmpty()) {
             bibliotecaPath = path;
-            libLabel->setText("Biblioteca: " + path);
+            libLabel->setText("📚 Biblioteca: " + path);
         }
     });
 
-    connect(userButton, &QPushButton::clicked, this, [userLabel]() {
-        QString path = QFileDialog::getOpenFileName(nullptr, "File utenti", "", "JSON (*.json)");
+    connect(userButton, &QPushButton::clicked, this, [=]() {
+        QString path = QFileDialog::getOpenFileName(this, "File utenti", "", "JSON (*.json)");
         if (!path.isEmpty()) {
             usersPath = path;
-            userLabel->setText("Users: " + path);
+            userLabel->setText("👤 Utenti: " + path);
         }
     });
 

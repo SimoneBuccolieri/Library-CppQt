@@ -4,6 +4,7 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QFormLayout>
 
 class InitialFileSelector : public QDialog {
     Q_OBJECT

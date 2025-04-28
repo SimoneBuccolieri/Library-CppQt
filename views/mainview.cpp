@@ -8,8 +8,6 @@
 
 MainView::MainView(UserController *userController, BibliotecaController *bibliotecaController, QMainWindow *parent) : QMainWindow(parent), userController(userController), bibliotecaController(bibliotecaController) {
     setWindowTitle("Biblioteca");
-    setFixedSize(800, 600);
-
     // Creazione della toolbar e pulsante logout
     QToolBar *toolBar = addToolBar("ToolBar");
     toolBar->setMovable(false);

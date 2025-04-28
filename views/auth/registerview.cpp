@@ -9,24 +9,39 @@
 RegisterView::RegisterView(UserController *controller, QWidget *parent)
     : QWidget(parent), userController(controller) {
     QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addStretch();
+    QFormLayout *form = new QFormLayout();
 
     usernameInput = new QLineEdit();
     passwordInput = new QLineEdit();
     loginButton = new QPushButton("Login");
-    registerButton = new QPushButton("Registrati");
+    registerButton = new QPushButton("Accedi");
 
     QLabel *titleLabel = new QLabel("Register Page", this);
-    layout->addWidget(titleLabel, 0, Qt::AlignHCenter);
+    titleLabel->setAlignment(Qt::AlignCenter);
+    form->addRow(titleLabel);
+    form->addItem(new QSpacerItem(0, 40, QSizePolicy::Minimum, QSizePolicy::Fixed));
 
-    layout->addWidget(usernameInput);
-    layout->addWidget(passwordInput);
-    layout->addWidget(registerButton);
+    QLabel *userLabel = new QLabel("Username", this);
+    userLabel->setAlignment(Qt::AlignCenter);
+    form->addRow(userLabel);
+    form->addRow(usernameInput);
+
+    QLabel *passLabel = new QLabel("Password", this);
+    passLabel->setAlignment(Qt::AlignCenter);
+    form->addRow(passLabel);
+    form->addRow(passwordInput);
+
+    form->addRow(registerButton);
+    form->addItem(new QSpacerItem(0, 40, QSizePolicy::Minimum, QSizePolicy::Fixed));
 
     QLabel *gotologin = new QLabel("Hai gia un account? Accedi!", this);
-    layout->addWidget(gotologin, 0, Qt::AlignHCenter);
-    layout->addWidget(loginButton);
+    gotologin->setAlignment(Qt::AlignCenter);
+    form->addRow(gotologin);
+    form->addRow(loginButton);
 
-
+    layout->addLayout(form);
+    layout->addStretch();
     connect(loginButton, &QPushButton::clicked, this, &RegisterView::onLoginClicked);
     connect(registerButton, &QPushButton::clicked, this, &RegisterView::onRegisterClicked);
 }

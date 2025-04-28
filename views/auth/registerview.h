@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QFormLayout>
 #include "usercontroller.h"
 
 class RegisterView : public QWidget {
