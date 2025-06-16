@@ -1,0 +1,150 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Relazione Progetto Biblioteca Virtuale}
+\author{Simone Buccolieri - 2113183}
+\date{Aprile 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduzione}
+
+Il progetto realizzato consiste in un'applicazione desktop per la gestione di una biblioteca multimediale, sviluppata utilizzando il framework Qt in linguaggio C++. L'obiettivo principale è fornire un'interfacica semplice e intuitiva per la gestione completa di varie tipologie di media quali libri, film e musica, consentendo operazioni quali l'aggiunta, la modifica, la visualizzazione dettagliata, la prenotazione e la restituzione dei singoli elementi.
+
+L'applicazione prevede inoltre la gestione degli utenti, che possono registrarsi, autenticarsi, e monitorare direttamente dalla propria area riservata i propri prestiti attivi. È stata posta particolare attenzione alla modularità e all'estensibilità del codice, attraverso l'adozione di tecniche di programmazione orientata agli oggetti e l'impiego intensivo del polimorfismo per gestire le diverse tipologie di media.
+
+L'utilizzo di Qt ha permesso di realizzare un'interfaccia grafica user-friendly e responsive, che rende l'applicazione facilmente utilizzabile anche da utenti meno esperti. Il progetto mira inoltre a semplificare e automatizzare il processo di gestione e persistenza dei dati, attraverso l'utilizzo di file JSON per il salvataggio e il caricamento delle informazioni relative a utenti e media della biblioteca.
+
+Nei capitoli successivi della relazione si descrivono dettagliatamente le scelte progettuali adottate, l'architettura logica dell'applicazione e gli aspetti tecnici più rilevanti dell'implementazione.
+
+
+
+\section{Descrizione delle classi principali del modello logico}
+
+Il progetto \textbf{Biblioteca} \`e strutturato seguendo il paradigma della programmazione orientata agli oggetti, con particolare attenzione all'organizzazione del modello logico. Di seguito viene fornita una panoramica delle classi principali:
+
+\subsection{ItemModel}
+\texttt{ItemModel} \`e la classe base astratta che rappresenta un generico elemento della biblioteca (libro, film, musica). Contiene attributi comuni quali titolo, autore, quantit\`a disponibile, anno di rilascio, genere e icona. Definisce inoltre metodi di accesso e modifica per tali attributi. \`E la base per l'ereditariet\`a delle classi derivate.
+
+\subsection{BookModel, FilmModel, MusicModel}
+Queste tre classi derivano da \texttt{ItemModel} e rappresentano rispettivamente libri, film e dischi musicali. Ognuna aggiunge attributi specifici:
+\begin{itemize}
+    \item \texttt{BookModel}: editore, ISBN, numero di pagine, lingua.
+    \item \texttt{FilmModel}: regista, durata, valutazione, lingua.
+    \item \texttt{MusicModel}: album, durata, etichetta discografica, formato.
+\end{itemize}
+Tali classi ridefiniscono metodi dove necessario per gestire correttamente le peculiarit\`a di ogni tipo di media.
+
+\subsection{BibliotecaModel}
+\texttt{BibliotecaModel} gestisce l'insieme degli oggetti \texttt{ItemModel} presenti nella biblioteca. Fornisce metodi per aggiungere, eliminare, cercare e modificare gli elementi, oltre alla gestione della persistenza tramite salvataggio e caricamento da file JSON.
+
+\subsection{UserModel}
+\texttt{UserModel} rappresenta l'insieme degli utenti registrati. Ogni utente \`e associato a un nome utente, una password e una mappa dei prestiti attivi (associando l'ID dell'elemento alla quantit\`a presa in prestito).
+
+\subsection{Controller}
+\begin{itemize}
+    \item \texttt{BibliotecaController}: gestisce la logica di alto livello per la biblioteca, come prenotazioni, restituzioni, modifiche e accesso agli elementi.
+    \item \texttt{UserController}: gestisce la registrazione, autenticazione e aggiornamento degli utenti.
+\end{itemize}
+Entrambi i controller fungono da intermediari tra il modello logico e l'interfaccia grafica, mantenendo separazione tra logica e presentazione.
+
+\subsection{View}
+\begin{itemize}
+    \item \texttt{LoginView}, \texttt{RegisterView}, \texttt{MainView}, \texttt{ShowItem}, \texttt{EditItem}, \texttt{AccountView}: finestre e schermate grafiche basate su \texttt{QWidget}, connesse ai controller per eseguire operazioni specifiche.
+\end{itemize}
+Ciascuna view \`e responsabile della presentazione dei dati e della gestione delle interazioni utente, secondo il pattern MVC (Model-View-Controller).
+
+
+
+\section{Utilizzo non banale del polimorfismo}
+
+Nel progetto \textit{Biblioteca}, il polimorfismo \`e stato sfruttato in modo non banale principalmente nella gestione degli oggetti \textbf{ItemModel} e delle sue sottoclassi \textbf{BookModel}, \textbf{FilmModel} e \textbf{MusicModel}. Questo approccio ha permesso di realizzare funzionalit\`a diverse a seconda del tipo specifico di media gestito, senza dover duplicare codice o appesantire la logica delle classi controller e delle viste.
+
+\subsection{Metodi polimorfi}
+
+\begin{itemize}
+    \item \textbf{Visualizzazione dei dati}: nelle interfacce grafiche, la classe \texttt{ShowItem} utilizza \texttt{dynamic\_cast} per riconoscere a runtime il tipo concreto dell'oggetto \texttt{ItemModel*} passato. In base al tipo (libro, film o musica), vengono mostrati campi specifici come ISBN, regista, etichetta discografica, ecc.
+    \item \textbf{Salvataggio dei dati}: durante la serializzazione in JSON nella classe \texttt{BibliotecaModel}, \`e implementata una logica polimorfa per salvare attributi differenti a seconda della sottoclasse effettiva di \texttt{ItemModel} (ad esempio, \texttt{publisher} per i libri o \texttt{duration} per film e musica).
+    \item \textbf{Modifica degli oggetti}: nella classe \texttt{EditItem}, la visualizzazione e la modifica dei campi avviene riconoscendo dinamicamente il tipo concreto dell'item, permettendo cos\`i di editare informazioni pertinenti al tipo (ad esempio, numero pagine solo per i libri).
+\end{itemize}
+
+\subsection{Valore aggiunto del polimorfismo}
+
+L'utilizzo del polimorfismo ha portato numerosi vantaggi progettuali:
+\begin{itemize}
+    \item \textbf{Estendibilit\`a}: aggiungere nuovi tipi di media in futuro richieder\`ebbe solo l'implementazione di una nuova sottoclasse di \texttt{ItemModel}, senza modificare il codice esistente.
+    \item \textbf{Manutenzione facilitata}: il codice \`e pi\`u ordinato, evitando lunghe sequenze di \texttt{if} o \texttt{switch} sulla tipologia di oggetto.
+    \item \textbf{Separazione delle responsabilit\`a}: ogni sottoclasse gestisce i propri dati specifici, rispettando il principio di singola responsabilit\`a (SRP).
+    \item \textbf{Efficienza nello sviluppo}: le viste (come \texttt{ShowItem} ed \texttt{EditItem}) sono state sviluppate una volta sola, sfruttando il comportamento polimorfo per adattarsi ai diversi tipi di oggetti.
+\end{itemize}
+
+\section{Metodo di persistenza dei dati}
+
+Il progetto \textit{Biblioteca} utilizza il formato JSON per la persistenza dei dati, sfruttando le classi offerte da Qt come \texttt{QJsonDocument}, \texttt{QJsonObject}, \texttt{QJsonArray} e \texttt{QFile}. Questa scelta garantisce leggibilità, portabilità e facilità di manipolazione dei dati.
+
+\subsection{Salvataggio dei dati}
+
+Il salvataggio degli oggetti della biblioteca avviene attraverso la serializzazione delle istanze di \texttt{ItemModel} e delle sue sottoclassi (\texttt{BookModel}, \texttt{FilmModel}, \texttt{MusicModel}) in oggetti \texttt{QJsonObject}. Ogni oggetto serializzato include attributi comuni (ID, titolo, autore, quantità, anno di rilascio, genere, icona) e attributi specifici in base al tipo di media. Questi oggetti vengono aggregati in un \texttt{QJsonArray}, che viene poi scritto su file utilizzando \texttt{QJsonDocument}.
+
+\subsection{Caricamento dei dati}
+
+All'avvio dell'applicazione, i dati vengono caricati leggendo il contenuto dei file JSON. Il contenuto viene interpretato come un \texttt{QJsonArray}, e per ogni oggetto JSON viene determinato il tipo di media attraverso il campo \texttt{tipologia}. In base a questo, viene istanziata la classe corrispondente (\texttt{BookModel}, \texttt{FilmModel}, \texttt{MusicModel}) e popolata con i dati deserializzati.
+
+\subsection{Persistenza degli utenti}
+
+Analogamente, le informazioni sugli utenti vengono salvate e caricate utilizzando il formato JSON. Ogni utente è rappresentato da un oggetto JSON contenente il nome utente, la password e una mappa dei prestiti attivi. Questi dati vengono gestiti dalla classe \texttt{UserModel}.
+
+\subsection{Gestione dei file}
+
+L'applicazione offre la possibilità di selezionare i file JSON da utilizzare per la biblioteca e gli utenti attraverso una finestra di dialogo all'avvio. I percorsi dei file selezionati vengono memorizzati in variabili globali, rendendoli accessibili a tutte le componenti dell'applicazione che necessitano di accedere o modificare i dati persistenti.
+
+\section{Funzionalità aggiuntive implementate}
+
+Il progetto include diverse funzionalità extra rispetto alla gestione base della biblioteca:
+
+\begin{itemize}
+    \item \textbf{Autenticazione utente:} È presente un sistema di login e registrazione, che permette di accedere in modo sicuro e riservato. Le credenziali (username e password) vengono salvate in un file JSON e sono riutilizzabili ad ogni avvio del programma. Ogni utente ha inoltre la possibilità di registrarsi autonomamente tramite un'apposita interfaccia.
+
+    \item \textbf{Controllo dei privilegi:} Solo utenti autorizzati (ad esempio personale amministrativo) possono modificare o eliminare elementi presenti nella biblioteca. Gli utenti normali possono solamente visualizzare, prenotare e restituire i media.
+
+    \item \textbf{Gestione avanzata dei prestiti:} Tramite una sezione dedicata nell'Account View, gli utenti possono monitorare i propri prestiti correnti e restituire i libri direttamente dall'interfaccia, semplificando l'interazione con il sistema.
+
+    \item \textbf{Persistenza dei dati:} Ogni modifica (nuove registrazioni, modifiche ai prestiti, aggiornamenti agli item) viene salvata automaticamente in file JSON, assicurando la conservazione dei dati anche tra sessioni diverse.
+\end{itemize}
+
+\section{Rendicontazione delle ore}
+
+Il progetto è stato inizialmente pianificato prevedendo un totale di circa 40 ore di lavoro. Tuttavia, durante lo sviluppo effettivo, il tempo necessario per la realizzazione delle funzionalità, la gestione della persistenza dei dati e l'implementazione dell'interfaccia grafica si è rivelato superiore rispetto alle stime iniziali.
+
+Il totale delle ore effettivamente svolte è stato di circa 50 ore, suddivise nelle seguenti attività principali:
+
+\begin{itemize}
+    \item Analisi dei requisiti e progettazione dell'architettura: 8 ore
+    \item Implementazione delle classi modello (ItemModel e derivate): 10 ore
+    \item Realizzazione dell'interfaccia grafica (Qt Widgets): 12 ore
+    \item Gestione della persistenza dei dati tramite file JSON: 8 ore
+    \item Implementazione dell'autenticazione e gestione utenti: 7 ore
+    \item Testing, debugging e rifinitura del progetto: 5 ore
+\end{itemize}
+
+Il lavoro si è concentrato in particolare sull'integrazione del sistema di login, sulla gestione dei prestiti personalizzati per utente e sulla realizzazione di interfacce user-friendly attraverso Qt, che hanno richiesto più tempo del previsto.
+
+\section{Conclusioni}
+
+Il progetto sviluppato ha consentito di mettere in pratica molteplici concetti chiave della programmazione orientata agli oggetti, tra cui l'uso avanzato del polimorfismo, la gestione della persistenza dei dati e l'integrazione di una interfaccia grafica tramite Qt.
+
+L'implementazione del sistema di autenticazione, della gestione dei prestiti personalizzati e della possibilità di modificare e visualizzare gli elementi della biblioteca ha fornito funzionalità complete e realistiche, simili a quelle di un'applicazione gestionale reale.
+
+Inoltre, l'approfondimento delle tecniche di caricamento dinamico dei file JSON ha permesso di creare un sistema riutilizzabile e scalabile, migliorando la qualità del progetto. L'utilizzo del polimorfismo in maniera non banale, attraverso metodi come \texttt{display()} ridefiniti per ogni sottoclasse di \texttt{ItemModel}, ha dimostrato l'efficacia di queste tecniche nella riduzione della complessità del codice.
+
+Nonostante le difficoltà incontrate durante lo sviluppo, il progetto ha raggiunto tutti gli obiettivi prefissati, offrendo un'applicazione stabile, funzionale e facilmente estendibile. L'esperienza complessiva si è rivelata altamente formativa, sia dal punto di vista tecnico sia metodologico.
+
+
+\end{document}
+
